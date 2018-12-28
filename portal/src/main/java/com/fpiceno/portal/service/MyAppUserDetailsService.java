@@ -16,6 +16,7 @@ import com.fpiceno.portal.entity.UserInfo;
 public class MyAppUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserDao userDAO;
+
 	@Override
 	public UserDetails loadUserByUsername(String userName)
 			throws UsernameNotFoundException {

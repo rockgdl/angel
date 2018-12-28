@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class UserInfo implements Serializable {
 	
 	@Id
@@ -17,7 +17,7 @@ public class UserInfo implements Serializable {
 	private String password;
 	@Column
 	private String role;
-	@Column
+	@Column(name="full_name")
 	private String fullName;
 	@Column
 	private String country;

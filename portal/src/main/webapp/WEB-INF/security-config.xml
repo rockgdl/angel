@@ -8,12 +8,7 @@
 	http://www.springframework.org/schema/security/spring-security.xsd">
 	<http>
 		<intercept-url  pattern="/user/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
-		<form-login 
-		   login-page="/customLogin.jsp" 
-		   login-processing-url="/appLogin"
-		   username-parameter="app_username"
-		   password-parameter="app_password"
-		   default-target-url="/user/home"/>
+		<form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/user/home"/>
 		<logout 
 		   logout-url="/appLogout" 
 		   logout-success-url="/customLogin.jsp"/>  
