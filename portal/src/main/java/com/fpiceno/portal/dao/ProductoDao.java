@@ -3,6 +3,7 @@ package com.fpiceno.portal.dao;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.fpiceno.portal.entity.Producto;
 

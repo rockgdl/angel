@@ -28,12 +28,12 @@
 			<th> ID </th>
 			<th> Producto </th>
 			<th> Alta </th>
-			<th> Ultima modificiación </th>
+			<th> Ultima modificiaciï¿½n </th>
 			<th> Tipo Calidad</th>
 			<th> Unidad </th>
-			<th> Observación </th>
+			<th> Observaciï¿½n </th>
 			<th> Precio</th>
-			<th>Operación </th>
+			<th>Operaciï¿½n </th>
 		</tr>
 				
 		<tr>

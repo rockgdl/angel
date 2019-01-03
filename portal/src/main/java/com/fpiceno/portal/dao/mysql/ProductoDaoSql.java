@@ -1,7 +1,8 @@
-package com.fpiceno.dao.mysql;
+package com.fpiceno.portal.dao.mysql;
 
 import java.util.ArrayList;
 import java.util.List;
+
 
 
 
@@ -11,6 +12,7 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fpiceno.portal.dao.ProductoDao;
@@ -18,51 +20,59 @@ import com.fpiceno.portal.entity.Producto;
 
 @Transactional
 public class ProductoDaoSql implements ProductoDao {
+	
+
+	@Autowired
+	private SessionFactory sessionFactory;
 
 	@Override
 	public Integer Agrega(Producto producto) {
-		   Session session=getSession();
-		   Transaction tx=session.beginTransaction();
+			System.out.println("entre al metodo*************: "+producto);
+		   Session session= sessionFactory.getCurrentSession();
+//		   Session session=getSession();
+//		   Transaction tx=session.beginTransaction();
 		  Integer id=(Integer) session.save(producto);
-		  tx.commit();
+//		  tx.commit();
+		  
+		  
 		  return id;
 	}
 
 	@Override
 	public void Actualiza(Producto producto) {
-		   Session session=getSession();
-		   Transaction tx=session.beginTransaction();
+		   Session session= sessionFactory.getCurrentSession();
+//		   Transaction tx=session.beginTransaction();
 		   session.update(producto);
-		   tx.commit();
+//		   tx.commit();
 	}
 
 	@Override
 	public void Elimina(Producto producto) {
-		   Session session=getSession();
-		   Transaction trans=session.beginTransaction();
+		   Session session= sessionFactory.getCurrentSession();
+//		   Transaction trans=session.beginTransaction();
 		   session.delete(producto);
-		   trans.commit();
+//		   trans.commit();
 	}
 
 	@Override
 	public List<Producto> obtenTodos() {
 //		LOG.debug("REGRESANDO LA LISTA DE COLONIA ");
-		   Session session=getSession();
-		   Transaction trans=session.beginTransaction();
+		   Session session= sessionFactory.getCurrentSession();
+//		   Transaction trans=session.beginTransaction();
 		Query query=session.createQuery("from Producto");
 		ArrayList<Producto> lista = (ArrayList<Producto>) query.list();
-		trans.commit();
+//		trans.commit();
 		return lista;
 	}
 
 	@Override
 	public Producto obtenById(Integer id) {
 //		LOG.info("OBTENER COLONIA POR ID  ");
-		   Session session=getSession();
-		   Transaction trans=session.beginTransaction();
+		   Session session= sessionFactory.getCurrentSession();
+//		   Transaction trans=session.beginTransaction();
 		   Producto producto=new Producto();
 		producto =  (Producto) session.get(Producto.class, id);
-		trans.commit();
+//		trans.commit();
 		return producto;
 	}
 
