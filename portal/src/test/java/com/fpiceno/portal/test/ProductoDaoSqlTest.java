@@ -23,7 +23,7 @@ import com.fpiceno.portal.entity.UnidadMedida;
 @ContextConfiguration(locations = {
         "classpath:db-config.xml",
         "classpath:security-config.xml"})
-@Transactional
+
 public class ProductoDaoSqlTest {
 
 	@Autowired
@@ -40,17 +40,18 @@ public class ProductoDaoSqlTest {
 	public void testAgrega() {
 		
 		Producto producto= new Producto();
+		producto.setId(12);
 		producto.setFechaAlta(new Date());
 		producto.setFechaModificacion(new Date());
 		producto.setNombre("papaya");
 		producto.setObservaciones("observaciones");
-		producto.setTipoCalidad(TipoCalidad.PREMIUM);
-		producto.setUnidad(UnidadMedida.KG);
-		producto.setPrecio(15.44);
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.GRAMOS);
+		producto.setPrecio(12.00);
 		
 //		ProductoDao dao=new ProductoDaoSql();
 		Integer id=dao.Agrega(producto);
-		System.out.println(id);
+		System.out.println("identificador ********************-----------***********" +id);
 	}
 
 	@Test
