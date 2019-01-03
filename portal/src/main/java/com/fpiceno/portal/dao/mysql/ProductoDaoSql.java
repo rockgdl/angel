@@ -30,9 +30,7 @@ public class ProductoDaoSql implements ProductoDao {
 			System.out.println("entre al metodo*************: "+producto);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
-//		   Transaction tx=session.beginTransaction();
 		  Integer id=(Integer) session.save(producto);
-//		  tx.commit();
 		  
 		  
 		  return id;
