@@ -20,7 +20,10 @@
 </head>
 <body>
 
+<div>
+
 	<table align="center">
+		<tbody>
 		<tr>
 			<th> ID </th>
 			<th> Producto </th>
@@ -30,8 +33,33 @@
 			<th> Unidad </th>
 			<th> Observación </th>
 			<th> Precio</th>
+			<th>Operación </th>
 		</tr>
-		
+				
+		<tr>
+		<form action="insertProducto.jsp" method="POST">
+			<td> </td>
+			<td> <input type="text" name="nombre"> </td>
+			<td> <input type="text" name="alta"> </td>
+			<td> <input type="text" name="modificacion"> </td>
+			<td>	 
+				<select>
+					<option value="1">STANDAR</option>
+					<option value="2">PREMIUM</option>
+				</select> 
+			</td>
+			<td>
+			 	<select>
+					<option value="1">KG</option>
+					<option value="2">GRAMOS</option>
+				</select>
+			</td>
+			<td> <textarea name="observacion" rows="4" cols="20"></textarea> </td>
+			<td> <input type="text" name="precio"></td>
+			<td> <input type="submit" value="Agregar"> </td>
+		</form>
+		</tr>
+			
 		<tr>
 			<td> 1</td>
 			<td> 1</td>
@@ -41,8 +69,17 @@
 			<td> 1</td>
 			<td> 1</td> 
 			<td> 1</td>
+			<td>
+				<form action="insertProducto.jsp" method="GET">
+					<input type="submit" value="Eliminar"> <br><br>
+				</form>
+					
+				<form action="insertProducto.jsp" method="GET">
+					<input type="submit" value="Modificar">
+				</form>
+			</td> 
 		</tr>
-		
+			
 		<tr>
 			<td> 2</td>
 			<td> 2</td>
@@ -51,9 +88,20 @@
 			<td> 2</td>
 			<td> 2</td>
 			<td> 2</td>
-			<td> 2</td> 
+			<td> 2</td>
+			<td>
+				<form action="insertProducto.jsp" method="GET">
+					<input type="submit" value="Eliminar"> <br><br>
+				</form>
+				
+				<form action="insertProducto.jsp" method="GET">
+					<input type="submit" value="Modificar">
+				</form>
+			</td> 
 		</tr>
-		
+	</tbody>
 	</table>
+
+</div>	
 </body>
 </html>
