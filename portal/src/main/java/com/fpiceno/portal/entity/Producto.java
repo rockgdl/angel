@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table (name="producto")
 public class Producto implements Serializable{
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
 	@Column (name="nombre")
 	private String nombre;
