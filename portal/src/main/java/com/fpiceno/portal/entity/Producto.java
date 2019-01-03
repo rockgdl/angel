@@ -1,5 +1,6 @@
 package com.fpiceno.portal.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
@@ -12,7 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 @Entity
 @Table (name="producto")
-public class Producto {
+public class Producto implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Integer id;

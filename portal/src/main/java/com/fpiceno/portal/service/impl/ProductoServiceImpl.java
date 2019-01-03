@@ -10,12 +10,12 @@ import com.fpiceno.portal.service.ProductoService;
 
 public class ProductoServiceImpl implements ProductoService {
 	@Autowired
-	private ProductoDao userDAO;
+	private ProductoDao productoDAO;
 	
 	
 	@Override
 	public List<Producto> getProducts() {
-		return userDAO.obtenTodos();
+		return productoDAO.obtenTodos();
 	}
 
 }
