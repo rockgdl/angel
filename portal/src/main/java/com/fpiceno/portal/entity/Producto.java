@@ -14,6 +14,10 @@ import javax.persistence.Table;
 @Entity
 @Table (name="producto")
 public class Producto implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2430337304289234787L;
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer id;
