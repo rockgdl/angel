@@ -28,7 +28,7 @@
 		<input type="text" name="unidad"> <br><br>
 		
 		<label>Observacion :</label>
-		<textarea type="text" name="observacion" rows="4" cols="50"> </textarea> <br><br>
+		<textarea name="observacion" rows="4" cols="50"> </textarea> <br><br>
 		
 		<label>Precio:</label>
 		<input type="text" name="precio"> <br><br>
