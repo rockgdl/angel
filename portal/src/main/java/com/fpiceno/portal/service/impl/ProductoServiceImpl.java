@@ -18,4 +18,10 @@ public class ProductoServiceImpl implements ProductoService {
 		return productoDAO.obtenTodos();
 	}
 
+
+	@Override
+	public Integer agregarProducto(Producto producto) {
+		return productoDAO.Agrega(producto);
+	}
+
 }

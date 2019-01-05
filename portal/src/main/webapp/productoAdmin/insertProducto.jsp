@@ -4,11 +4,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Agregar Producto </title>
 </head>
 <body>
 
-	<form action="adminProductos.jsp" method="POST">
+	<form action="agregar" method="POST" >
+	 <p th:text="'La fecha es: ' + ${id}" />
+<%-- 	<input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/> --%>
 		<label>Nombre:</label>
 		<input type="text" name="nombre"> <br><br>
 		
@@ -16,10 +18,7 @@
 		<input type="text" name="alta"> <br><br>
 		
 		<label>Modificacion:</label>
-		<input type="text" name="modificacion"> <br><br>
-		
-		<label>Nombre:</label>
-		<input type="text" name="nombre"> <br><br>
+		<input type="text" name="modificacion"> <br>
 		
 		<label>Calidad:</label>
 		<input type="text" name="Calidad"> <br><br>

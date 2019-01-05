@@ -24,6 +24,6 @@ public class UserController {
  	}
 	@RequestMapping(value="/error")
 	public String error() {
- 		return "access-denied";
+ 		return "../WEB-INF/secure/access-denied";
  	}
 }

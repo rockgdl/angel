@@ -22,7 +22,7 @@
     <!-- **************************************************************** -->
 
     <bean id="templateResolver" class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
-        <property name="prefix" value="/WEB-INF/secure/" />
+        <property name="prefix" value="/productoAdmin/" />
         <property name="suffix" value=".jsp" />
         <property name="templateMode" value="HTML5" />
     </bean>
