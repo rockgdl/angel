@@ -4,8 +4,8 @@ import static org.junit.Assert.assertNotNull;
 
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
+
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,11 +14,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.context.support.SpringBeanAutowiringSupport;
+
+
+
 
 import com.fpiceno.portal.entity.Producto;
+import com.fpiceno.portal.entity.TipoCalidad;
+import com.fpiceno.portal.entity.UnidadMedida;
 import com.fpiceno.portal.service.ProductoService;
-import com.fpiceno.portal.dao.ProductoDao;
 
 @Controller
 @RequestMapping("/productos")
@@ -33,16 +36,29 @@ public class ProductoController  {
 	@RequestMapping(value="/principal")
 	public String home(ModelMap model, Authentication authentication) {
 //		authentication.getPrincipal();
+		
 		model.addAttribute("productos", servicio.getProducts());
 		model.addAttribute("fecha", new Date());
- 		return "productoAdmin/adminProductos";
+		model.addAttribute("calidades", TipoCalidad.values());
+		model.addAttribute("medidas", UnidadMedida.values());
+ 		return "adminProductos";
  	}
 	
-	@RequestMapping(value="/agregar")
+	@RequestMapping(value="/value")
+	public String evaluar(){
+		
+		
+		return "adminProductos";
+	}
+	
+	@RequestMapping(value="/addProducto")
 	public String agregaProducto(ModelMap model, @RequestParam(value="nombre",required = false) String nombre,
 			   @RequestParam(value="modificacion",required = false) String modificaion,
 			   @RequestParam(value="observacion",required = false) String observaciones,
-			   @RequestParam(value="precio",required = false) Double precio) 
+			   @RequestParam(value="precio",required = false) Double precio,
+			  // @RequestParam(value="unidad",required = false)String unidad,
+			   @RequestParam(value="tipoCalidad",required = false) TipoCalidad calidad
+			) 
 			  
 	{
 		System.out.println("parametros recibidos  modificacion"+ modificaion+" observacin: "+ observaciones+" precio: "+precio);
@@ -51,14 +67,15 @@ public class ProductoController  {
 		producto.setNombre(nombre);
 		producto.setObservaciones(observaciones);
 		producto.setPrecio(precio);
-//		producto.setTipoCalidad(tipoCalidad);
-//		producto.setUnidad(unidad);
+		producto.setTipoCalidad(calidad);
+		//producto.setUnidad(UnidadMedida.valueOf(unidad));
 		model.addAttribute("id", servicio.agregarProducto(producto));
 //		System.out.println("id agregado "+model.);
 		
 		
 		model.addAttribute("productos", servicio.getProducts());
 		model.addAttribute("fecha", new Date());
+		model.addAttribute("calidades", TipoCalidad.values());
 		return "adminProductos";
 	}
 //	@RequestMapping(value="/error")
