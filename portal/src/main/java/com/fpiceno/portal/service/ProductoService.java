@@ -10,7 +10,7 @@ public interface ProductoService {
 
 	@Secured ({"ROLE_ADMIN"})
 	List<Producto>  getProducts();
-	@Secured ({"permitAll"})
+
 	Integer  agregarProducto(Producto producto);
 	
 	

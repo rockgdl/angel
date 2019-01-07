@@ -2,20 +2,29 @@
 <beans:beans xmlns="http://www.springframework.org/schema/security"
 	xmlns:beans="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans
-	http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/security
-	http://www.springframework.org/schema/security/spring-security.xsd">
-	<http auto-config="true">
-		<intercept-url pattern="/user/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
-		<intercept-url pattern="/user/error" access="permitAll" />
-		<intercept-url pattern="/productos/**" access="permitAll" />
-		<intercept-url pattern="portal/productos/**" access="permitAll" />
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://www.springframework.org/schema/security	http://www.springframework.org/schema/security/spring-security-4.2.xsd">
+
+
+<!-- 	<http auto-config="true"> -->
+
+		<security:http auto-config="true" use-expressions="true">
+		<security:intercept-url pattern="/user/**" access="hasAnyRole('ROLE_ADMIN','ROLE_USER')" />
+		<security:intercept-url pattern="/user/error" access="permitAll" />
+		<security:intercept-url pattern="/productos/**" access="permitAll" />
+		<security:intercept-url pattern="/productos/principal" access="permitAll" />
+		<security:intercept-url pattern="/portal/productos/principal" access="permitAll" />
+		<security:intercept-url pattern="portal/productos/**" access="permitAll" />
+		<security:intercept-url pattern="/portal/productos/**" access="permitAll" />
+<!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
+		
 <!-- 		<intercept-url pattern="/productos/**" access="isAuthenticated()" /> -->
-		<form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/user/home"/>
-		<logout logout-url="/appLogout" logout-success-url="/customLogin.jsp"/>  
+		<security:form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/user/home" />
+		<security:logout invalidate-session="true" logout-url="/appLogout" logout-success-url="/customLogin.jsp" />  
 		<access-denied-handler error-page="/user/error"/>
-	</http>
+		</security:http>
+<!-- 	</http> -->
 	<beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>	
 	<beans:bean name="myAppUserDetailsService" class="com.fpiceno.portal.service.MyAppUserDetailsService"/>
 
