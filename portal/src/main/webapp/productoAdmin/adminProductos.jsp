@@ -37,6 +37,28 @@
 	
 		
 		<form th:action="@{addProducto}" method="POST">
+				<!-- Modal -->
+			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">¡ ¡ ¡  ATENCION ! ! !</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			      <div class="modal-body">
+			        ¿Seguro que desea eliminar?
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+			        <button type="button" class="btn btn-primary">Si</button>
+			      </div>
+			    </div>
+			  </div>
+			</div>
+		
+		
 			<table align="center" class="table table-striped">
 				<thead>
 					<tr>
@@ -87,9 +109,9 @@
 						<td th:text="${producto.precio}">... </td>
 						<td>
 							<button class="btn btn-primary btn-xs" name="accion" value="Modificar" title="Editar">
-								<span class="glyphicon glyphicon-pencil"></span> <br><br>
+								<span class="glyphicon glyphicon-pencil"></span> 
 							</button>
-							<button class="btn btn-danger btn-xs" name="accion" value="Eliminar" title="Eliminar">
+							<button data-toggle="modal" data-target="#exampleModal" class="btn btn-danger btn-xs" name="accion" value="Eliminar" title="Eliminar">
 								<span class="glyphicon glyphicon-trash"></span>
 							</button>
 						</td> 
@@ -97,9 +119,8 @@
 				</tbody>
 			</table>
 		</form>
-	</div>	
-
-	
+	</div>
+		
 	<div>
 		<footer>
 			<p>Tel: 3646 3815</p>
