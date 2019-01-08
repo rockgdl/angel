@@ -76,12 +76,12 @@ public class ProductoDaoSqlTest {
 
 	@Test
 	public void testElimina() {
-//		Producto producto= new Producto();
-//		producto.setId(2);
-//		
+		Producto producto= new Producto();
+		producto.setId(19);
+		
 //		ProductoDao dao=new ProductoDaoSql();
-//		dao.Elimina(producto);
-//		System.out.println(producto);
+		dao.Elimina(producto);
+		System.out.println(producto);
 	}
 
 	@Test

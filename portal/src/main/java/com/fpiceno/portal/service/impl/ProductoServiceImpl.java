@@ -24,4 +24,17 @@ public class ProductoServiceImpl implements ProductoService {
 		return productoDAO.Agrega(producto);
 	}
 
+
+	@Override
+	public void EliminarProducto(Producto producto) {
+		productoDAO.Elimina(producto);
+	}
+
+
+	@Override
+	public void ActualizaProducto(Producto producto) {
+		productoDAO.Actualiza(producto);
+		
+	}
+
 }

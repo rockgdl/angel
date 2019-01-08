@@ -17,6 +17,8 @@
 		<security:intercept-url pattern="/portal/productos/principal" access="permitAll" />
 		<security:intercept-url pattern="portal/productos/**" access="permitAll" />
 		<security:intercept-url pattern="/portal/productos/**" access="permitAll" />
+		<security:intercept-url pattern="/test/**" access="permitAll" />
+		
 <!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
 		
 <!-- 		<intercept-url pattern="/productos/**" access="isAuthenticated()" /> -->

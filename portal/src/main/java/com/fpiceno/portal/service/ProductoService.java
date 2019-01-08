@@ -13,6 +13,9 @@ public interface ProductoService {
 
 	Integer  agregarProducto(Producto producto);
 	
+	void EliminarProducto(Producto producto);
+	void ActualizaProducto(Producto producto);
+	
 	
 	
 	
