@@ -13,23 +13,29 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
+    
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    crossorigin="anonymous">
+      </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
 	
-	<link href="estilosPropios.css" type="text/css" rel="stylesheet">
+	<link  type="text/css" rel="stylesheet" th:href="@{/resources/css/Layaout.css}">
+	<script type="text/javascript" th:src="@{/resources/js/adminProductos.js}"></script>
 	
-	<style>
-		.table-striped>thead>tr>th{
-			background-color: rgba(42,124,4,.50);
-		}
-	</style>
+	
+
 	
 </head>
 
 <body>
 
 <!--    					Ventana modal para eliminar -->
-          <div class="modal fade" id="deleteventanaModal" tabindex="-1" role="dialog"
-            aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
-            <form action="${pageContext.request.contextPath}/procesos/usuarios/solicitarPrestamo/delete">
+          <div class="modal fade" id="deleteventanaModal" tabindex="-1" role="dialog" aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
+            <form th:action="@{productos/deleteProducto}" >
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -60,9 +66,8 @@
         </div>
 
 <!-- 			ventana modal para editar -->
-     <div class="modal fade" id="editventanaModal" tabindex="-1" role="dialog"
-            aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
-            <form action="${pageContext.request.contextPath}/procesos/usuarios/solicitarPrestamo/update">
+     <div class="modal fade" id="editventanaModal" tabindex="-1" role="dialog" aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
+            <form th:action="@{productos/editProducto}" method="POST">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -98,52 +103,57 @@
 <!-- 	</div> -->
 	
 	<div>
-		<h1 th:text="'la fecha actual es:' + ${fecha}"></h1>
 	
 	
-	      <table class="table table-bordered table-striped table-hovered" id="tablaItems" data-show-refresh="true"
-       		data-show-toggle="true"
-       		data-show-columns="true" 
+	      <table class="table table-bordered table-striped table-hovered" id="tablaItems" data-show-refresh="true"	data-show-toggle="true"	data-show-columns="true" 
       		data-toolbar="#toolbar"
             data-toggle="table">
             <thead class="bg-primary text-white">
-<!--                 <tr> -->
-<!--                     <th data-field="state" data-checkbox="true"></th> -->
-<!--                     <th data-field="id" class="text-center">#</th> -->
-<!--                     <th data-field="Nombre" class="text-center">Nombre</th> -->
-<!--                     <th data-field="Acciones" class="text-center">Acciones</th> -->
-<!--                 </tr> -->
-                
-                <tr>
-						<th> ID </th>
-						<th> Producto </th>
-						<th> Alta </th>
-						<th> Ultima modificiación </th>
-						<th> Tipo Calidad</th>
-						<th> Unidad </th>
-						<th> Observación </th>
-						<th> Precio</th>
+             <tr>
+			 <th data-field="id" class="text-center"> ID </th>
+			 <th data-field="Producto" class="text-center"> Producto </th>
+             <th data-field="Alta" class="text-center"> Alta </th>
+			 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiación </th>
+			 <th data-field="Tipo Calidad" class="text-center"> Tipo Calidad</th>
+			 <th data-field="Unidad" class="text-center"> Unidad </th>
+			 <th data-field="Observacion" class="text-center"> Observación </th>
+			 <th data-field="Precio " class="text-center"> Precio</th>
+			 <th data-field="Acciones " class="text-center"> Acciones</th>
 						
 					</tr>
             </thead>
             <tbody>
-  			 <tr h:each="producto: ${productos}">
-	        <td class="bs-checkbox" ><input data-index="${tipo.id }" name="btSelectItem" type="checkbox"></td>
-	        <td class="text-center">${tipo.id}
-	        </td>
-	        <td class="text-center">${tipo.item}
-	        </td>
+		 	<tr th:each="producto: ${productos}">
+	        <td class="bs-checkbox" ><input data-index="${producto.id }" name="btSelectItem" type="checkbox"></td>
+	        <td class="text-center" th:text="${producto.id }"></td>
+	        <td class="text-center" th:text="${producto.nombre}"></td>
+	        <td class="text-center" th:text="${producto.fechaAlta}"></td>
+	        <td class="text-center" th:text="${producto.fechaModificacion}"></td>
+        	<td class="text-center" >	 
+				<select name="tipoCalidad">
+					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}"></option>	
+				</select> 
+			</td>
+			<td class="text-center">
+			 	<select name="unidad">
+					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option>
+				</select>
+			</td>
+	        <td class="text-center" th:text="${producto.observaciones}"></td>
+	        <td class="text-center" th:text="${producto.precio}"></td>
 	        <td class="text-center">
-                        <a href="#" class="btn btn-secondary text-white" title="Editar" role="button" id="edit${tipo.id }">
-                            <i class="fas fa-pencil-alt" ></i>
-                        </a>
-<!--                         <a href="#" class="btn btn-info text-white" title="Detalles"> -->
-<!--                             <i class="fas fa-bars"></i> -->
-<!--                         </a> -->
-                        <a href="#" class="btn btn-danger text-white" title="Eliminar" id="delete${tipo.id }" >
-                            <i class="fas fa-trash-alt" id="eliminar${tipo.id }" ></i>
-                        </a>
-                    </td>
+	        
+	        <button class="btn btn-info text-white" type="button" data-toggle="modal" data-target="#editventanaModal"> 
+				<i class="fas fa-pencil-alt" ></i>
+        	</button>
+	        <button class="btn btn-danger text-white" type="button" data-toggle="modal" data-target="#deleteventanaModal"> 
+                	<i class="fas fa-trash-alt" th:id="'eliminar'+ ${producto.id}"  ></i>
+        	</button>
+
+<%--                 <a href="#deleteventanaModal" class="btn btn-danger text-white" title="Eliminar" th:id="'delete' + ${producto.id}" > --%>
+<%--                 	<i class="fas fa-trash-alt" th:id="'eliminar'+ ${producto.id}"  ></i> --%>
+<!--                  </a> -->
+            </td>
 	        </tr>
 	  
  

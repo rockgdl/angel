@@ -41,7 +41,7 @@ public class ProductoController  {
 		model.addAttribute("medidas", UnidadMedida.values());
  		return "adminProductos";
  	}
-	@RequestMapping(value="/eliminar")
+	@RequestMapping(value="/deleteProducto")
 	public String eliminarProducto(ModelMap model, @RequestParam("id") Integer id ) {
 		
 		System.out.println("metodo de eliminar con el id recibido "+ id);
