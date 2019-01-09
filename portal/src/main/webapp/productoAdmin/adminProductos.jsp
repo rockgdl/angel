@@ -113,10 +113,10 @@
 			 <th data-field="id" class="text-center"> ID </th>
 			 <th data-field="Producto" class="text-center"> Producto </th>
              <th data-field="Alta" class="text-center"> Alta </th>
-			 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiación </th>
+			 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiaciï¿½n </th>
 			 <th data-field="Tipo Calidad" class="text-center"> Tipo Calidad</th>
 			 <th data-field="Unidad" class="text-center"> Unidad </th>
-			 <th data-field="Observacion" class="text-center"> Observación </th>
+			 <th data-field="Observacion" class="text-center"> Observaciï¿½n </th>
 			 <th data-field="Precio " class="text-center"> Precio</th>
 			 <th data-field="Acciones " class="text-center"> Acciones</th>
 						
@@ -167,10 +167,10 @@
 						<th> ID </th>
 						<th> Producto </th>
 						<th> Alta </th>
-						<th> Ultima modificiación </th>
+						<th> Ultima modificiaciï¿½n </th>
 						<th> Tipo Calidad</th>
 						<th> Unidad </th>
-						<th> Observación </th>
+						<th> Observaciï¿½n </th>
 						<th> Precio</th>
 						
 					</tr>

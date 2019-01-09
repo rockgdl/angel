@@ -17,7 +17,8 @@
 	<beans:bean name="myAppUserDetailsService" class="com.fpiceno.portal.service.MyAppUserDetailsService"/>
 
 	<beans:bean name="userService"    class="com.fpiceno.portal.service.UserService"/>	      
-	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>	      
+	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>	
+	<beans:bean name="CorreoService"    class="com.fpiceno.portal.service.impl.CorreoServiceImpl"/>      
 	<authentication-manager>
 		<authentication-provider user-service-ref="myAppUserDetailsService">
 		    <password-encoder ref="bcryptEncoder"/>
