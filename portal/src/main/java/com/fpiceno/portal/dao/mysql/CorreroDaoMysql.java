@@ -12,7 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.fpiceno.portal.dao.CorreoDao;
 import com.fpiceno.portal.entity.Correo;
-import com.fpiceno.portal.entity.Producto;
+
 
 @Transactional
 public class CorreroDaoMysql implements CorreoDao{

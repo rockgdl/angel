@@ -32,7 +32,15 @@ public class Correo implements Serializable{
 	private String mensaje;
 	@Column(name="Fecha_envio")
 	private Date fechaEnvio;
+	@Column(name="telefono")
+	private Integer telefono;
 	
+	public Integer getTelefono() {
+		return telefono;
+	}
+	public void setTelefono(Integer telefono) {
+		this.telefono = telefono;
+	}
 	public Integer getId() {
 		return id;
 	}

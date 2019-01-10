@@ -21,9 +21,9 @@ import java.util.Date;
 public class CorreoController {
 	
 	@Autowired
-	private Correo correo;
+	private CorreoService service;
 	@Autowired
-	private CorreoService servicio;
+	private Correo correo;
 	
 	@RequestMapping("Contacto")
 	public String Contacto(){
@@ -31,10 +31,11 @@ public class CorreoController {
 	}
 	
 	@RequestMapping("/Enviar")
-	public String enviar(ModelMap model, @RequestParam (value="destinatario", required=true) String destinatario,
+	public String enviar(@RequestParam (value="destinatario", required=true) String destinatario,
 			@RequestParam(value="asunto",required=true) String asunto,
 			@RequestParam (value="mensaje", required=true) String texto,
-			@RequestParam(value="remitente") String remitente) {
+			@RequestParam(value="remitente") String remitente,
+			@RequestParam(value="telefono", required=true) Integer telefono) {
 		
 		
 		//Enviar a simulador de correos 
@@ -73,8 +74,9 @@ public class CorreoController {
 		 correo.setAsunto(asunto);
 		 correo.setFechaEnvio(new Date());
 		 correo.setMensaje(texto);
-		 Integer id=servicio.agregarCorreo(correo);
-		 model.addAttribute("id", id);
+		 correo.setTelefono(telefono);
+		 service.agregarCorreo(correo);
+		 
 		return "contactoForm";
 	}
 }

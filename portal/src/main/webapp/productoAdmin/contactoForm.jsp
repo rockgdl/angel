@@ -21,6 +21,15 @@
 							
 			<form th:action="@{Enviar}" method="POST">
 				<input type="hidden" name="remitente" value="fruteria.verde@outlook.com">
+				
+				<div class="input-group mb-3">
+					<div class="input-group-prepend">
+						<div class="input-group-text">
+							<span class="fa fa-phone"></span>
+						</div>		
+					</div>
+					<input type="text" name="telefono" placeholder="Tel:" class="form-control" size="30" id="tel-ghc"> <br>
+				</div>
 									
 				<div class="input-group mb-3">
 					<div class="input-group-prepend">
@@ -31,7 +40,7 @@
 					<input type="email" name="destinatario" placeholder="Correo" class="form-control" size="30" id="user-sdfg"> <br>
 				</div>
 									
-				<div class="input-group mb3">
+				<div class="input-group mb-3">
 					<div class="input-group-prepend">
 						<div class="input-group-text">
 							<span class="fa fa-pencil"></span>
