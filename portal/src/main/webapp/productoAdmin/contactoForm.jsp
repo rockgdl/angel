@@ -9,8 +9,6 @@
 
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
 	
-	<link href="estilosPropios.css" type="text/css" rel="stylesheet">
-	
 </head>
 <body>
 
