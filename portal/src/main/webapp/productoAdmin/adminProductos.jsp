@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
-	<title>Insert title here</title>
+	<title>Administracion de Productos</title>
 
 	
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
@@ -13,21 +13,16 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.12.1/bootstrap-table.min.css">
-    
-      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
     crossorigin="anonymous">
-      </script>
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous">
     </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
-	
 	<link  type="text/css" rel="stylesheet" th:href="@{/resources/css/Layaout.css}">
 	<script type="text/javascript" th:src="@{/resources/js/adminProductos.js}"></script>
-	
-	
-
 	
 </head>
 
@@ -104,13 +99,12 @@
 	
 	<div>
 	
-	
-	      <table class="table table-bordered table-striped table-hovered" id="tablaItems" data-show-refresh="true"	data-show-toggle="true"	data-show-columns="true" 
+      <table class="table table-bordered table-striped table-hovered" id="tablaItems" data-show-refresh="true"	data-show-toggle="true"	data-show-columns="true" 
       		data-toolbar="#toolbar"
             data-toggle="table">
             <thead class="bg-primary text-white">
              <tr>
-			 <th data-field="id" class="text-center"> ID </th>
+			 <th data-field="id" class="text-center">ID</th>
 			 <th data-field="Producto" class="text-center"> Producto </th>
              <th data-field="Alta" class="text-center"> Alta </th>
 			 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiación </th>
@@ -149,10 +143,6 @@
 	        <button class="btn btn-danger text-white" type="button" data-toggle="modal" data-target="#deleteventanaModal"> 
                 	<i class="fas fa-trash-alt" th:id="'eliminar'+ ${producto.id}"  ></i>
         	</button>
-
-<%--                 <a href="#deleteventanaModal" class="btn btn-danger text-white" title="Eliminar" th:id="'delete' + ${producto.id}" > --%>
-<%--                 	<i class="fas fa-trash-alt" th:id="'eliminar'+ ${producto.id}"  ></i> --%>
-<!--                  </a> -->
             </td>
 	        </tr>
 	  

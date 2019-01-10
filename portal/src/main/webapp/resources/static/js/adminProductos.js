@@ -1,17 +1,17 @@
 $(document).ready(function(){
-	console.log("listo en el documento de prestamos");
+	console.log("listo para el documento de productos");
 //	 var $table = $('#tablaItems');
 	
  var checkedRows = [];
 
  $('#tablaItems').on('check.bs.table', function (e, row) {
 	 console.log("sobre los check");
-   checkedRows.push({id: row.id, nombre: row.Nombre});
+   checkedRows.push({id: row.id, nombre: row.Producto});
    
    $('a[id^="edit"]').click(function(){
 	   $.each(checkedRows, function(index, value) {
 	 //  console.log(value.id, value.nombre);
-		   $("#editventanaModal").modal();
+//		   $("#editventanaModal").modal();
 		   $("#txtItemEdit").val(value.nombre.trim());
 		   $("#idItemEdit").val(value.id.trim());
 		   
