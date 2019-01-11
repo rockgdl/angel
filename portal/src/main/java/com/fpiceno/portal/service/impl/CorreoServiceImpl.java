@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fpiceno.portal.dao.CorreoDao;
 import com.fpiceno.portal.entity.Correo;
-import com.fpiceno.portal.service.CorreoService;;
+import com.fpiceno.portal.service.CorreoService;
 
 public class CorreoServiceImpl implements CorreoService {
 	@Autowired

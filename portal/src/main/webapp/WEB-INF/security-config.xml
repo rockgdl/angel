@@ -18,6 +18,14 @@
 		<security:intercept-url pattern="portal/productos/**" access="permitAll" />
 		<security:intercept-url pattern="/portal/productos/**" access="permitAll" />
 		<security:intercept-url pattern="/test/**" access="permitAll" />
+		<security:intercept-url pattern="portal/userCRUD/createUser" access="permitAll" />
+		<security:intercept-url pattern="/userCRUD/createUser" access="permitAll" />
+		<security:intercept-url pattern="/portal/userCRUD/createUser" access="permitAll" />
+		<security:intercept-url pattern="/userCRUD/**" access="permitAll" />
+		
+		
+		
+		
 		
 <!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
 		
@@ -33,6 +41,8 @@
 	<beans:bean name="userService"    class="com.fpiceno.portal.service.UserService"/>	      
 	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>
 	<beans:bean name="CorreoService"    class="com.fpiceno.portal.service.impl.CorreoServiceImpl"/>	      
+	<beans:bean name="UserServiceCRUD"    class="com.fpiceno.portal.service.impl.UserServiceImplCRUD"/>
+	
 	<authentication-manager>
 		<authentication-provider user-service-ref="myAppUserDetailsService">
 		    <password-encoder ref="bcryptEncoder"/>

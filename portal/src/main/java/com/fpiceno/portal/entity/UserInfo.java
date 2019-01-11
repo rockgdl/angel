@@ -61,5 +61,10 @@ public class UserInfo implements Serializable {
 	public void setEnabled(short enabled) {
 		this.enabled = enabled;
 	}
+	@Override
+	public String toString() {
+		return "UserInfo [username=" + username + ", password=" + password + ", role=" + role + ", fullName=" + fullName
+				+ ", country=" + country + ", enabled=" + enabled + "]";
+	}
 	
 }
