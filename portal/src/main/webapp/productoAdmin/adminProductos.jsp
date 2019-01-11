@@ -4,8 +4,6 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" >
 	<title>Administracion de Productos</title>
-
-	
  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
 
     <!-- Bootstrap CSS -->
@@ -23,10 +21,10 @@
     crossorigin="anonymous"></script>
 	<link  type="text/css" rel="stylesheet" th:href="@{/resources/css/Layaout.css}">
 	<script type="text/javascript" th:src="@{/resources/js/adminProductos.js}"></script>
-	
 </head>
-
 <body>
+
+   <main class="container">
 
 <!--    					Ventana modal para eliminar -->
           <div class="modal fade" id="deleteventanaModal" tabindex="-1" role="dialog" aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
@@ -104,7 +102,8 @@
             data-toggle="table">
             <thead class="bg-primary text-white">
              <tr>
-			 <th data-field="id" class="text-center">ID</th>
+             <th data-field="state" data-checkbox="true"></th>
+			 <th data-field="id" class="text-center">#</th>
 			 <th data-field="Producto" class="text-center"> Producto </th>
              <th data-field="Alta" class="text-center"> Alta </th>
 			 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiaci�n </th>
@@ -118,7 +117,7 @@
             </thead>
             <tbody>
 		 	<tr th:each="producto: ${productos}">
-	        <td class="bs-checkbox" ><input data-index="${producto.id }" name="btSelectItem" type="checkbox"></td>
+	        <td class="bs-checkbox" ><input th:attr="data-index=${producto.id }" name="btSelectItem" type="checkbox"></td>
 	        <td class="text-center" th:text="${producto.id }"></td>
 	        <td class="text-center" th:text="${producto.nombre}"></td>
 	        <td class="text-center" th:text="${producto.fechaAlta}"></td>
@@ -210,9 +209,10 @@
 					</tr>
 				</tbody>
 			</table>
+			
 		</form>
 	</div>
-		
+		</main>
 	<div>
 		<footer>
 			<p>Tel: 3646 3815</p>
@@ -221,9 +221,12 @@
 		</footer>
 	</div>
 	
+	
 		<!-- JavaScript -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 		<!-- Latest compiled and minified JavaScript -->
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+		
+		  
 </body>
 </html>
