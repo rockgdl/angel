@@ -7,7 +7,7 @@ import com.fpiceno.portal.entity.UserInfo;;
 public interface UserServiceCRUD {
 	List<UserInfo>  getUsers();
 
-	Integer  agregarUser(UserInfo user);
+	void  agregarUser(UserInfo user);
 	
 	void EliminarUser(UserInfo user);
 	void ActualizaUser(UserInfo user);

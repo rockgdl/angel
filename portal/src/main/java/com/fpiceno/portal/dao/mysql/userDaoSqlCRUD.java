@@ -19,14 +19,14 @@ public class userDaoSqlCRUD implements UserDaoCRUD{
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public Integer Agrega(UserInfo user) {
+	public void Agrega(UserInfo user) {
 			System.out.println("entre al metodo*************: "+user);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
-		  Integer id=(Integer) session.save(user);
+		  //Integer id=(Integer) session.save(user);
+		   session.save(user);
 		  
-		  
-		  return id;
+		  //return id;
 	}
 
 	@Override

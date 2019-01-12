@@ -20,8 +20,8 @@ public class UserServiceImplCRUD implements UserServiceCRUD{
 
 
 	@Override
-	public Integer agregarUser(UserInfo user) {
-		return userDAO.Agrega(user);
+	public void agregarUser(UserInfo user) {
+		 userDAO.Agrega(user);
 	}
 
 

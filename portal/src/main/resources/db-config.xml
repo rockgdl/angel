@@ -44,5 +44,10 @@
 	</bean>	
 	<bean class="com.fpiceno.portal.dao.UserDao" />
 	<bean name="productDao" class="com.fpiceno.portal.dao.mysql.ProductoDaoSql"/>
+	<bean name="producto" class="com.fpiceno.portal.entity.Producto"/>
+	<bean name="correo" class="com.fpiceno.portal.entity.Correo"/>
+	<bean name="correoDao" class="com.fpiceno.portal.dao.mysql.CorreroDaoMysql"/>
+	<bean name="user" class="com.fpiceno.portal.entity.UserInfo"/>
+	<bean name="UserDaoCRUD" class="com.fpiceno.portal.dao.mysql.userDaoSqlCRUD"/>
 	<tx:annotation-driven transaction-manager="transactionManager" /> 		
 </beans> 
