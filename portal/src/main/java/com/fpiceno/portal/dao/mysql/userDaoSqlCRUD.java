@@ -15,16 +15,26 @@ import com.fpiceno.portal.dao.UserDaoCRUD;;
 
 @Transactional
 public class userDaoSqlCRUD implements UserDaoCRUD{
+
 	@Autowired
 	private SessionFactory sessionFactory;
 	
 	@Override
+<<<<<<< HEAD
 	public void Agrega(UserInfo user) {
 			System.out.println("entre al metodo*************: "+user);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
 		  //Integer id=(Integer) session.save(user);
 		   session.save(user);
+=======
+	public Integer Agrega(UserInfo user) {
+		System.out.println("entre al metodo*************: "+user);
+		Session session= sessionFactory.getCurrentSession();
+		Integer id=(Integer) session.save(user);
+		  
+		  
+>>>>>>> master
 		  
 		  //return id;
 	}

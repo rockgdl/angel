@@ -8,6 +8,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.fpiceno.portal.entity.UserInfo;
@@ -16,8 +17,8 @@ import com.fpiceno.portal.service.UserServiceCRUD;;
 @Controller
 @RequestMapping(value="/userCRUD")
 public class UserControllerCRUD {
-	@Autowired
-	private UserInfo user;
+//	@Autowired
+//	private UserInfo user;
 	
 	@Autowired
 	private UserServiceCRUD service;
@@ -26,7 +27,7 @@ public class UserControllerCRUD {
 	public String usuario() {
 		return "userForm";
 	}
-	@RequestMapping(value="/createUser")
+	@RequestMapping(value="/createUser", method=RequestMethod.POST)
 	public String create(@RequestParam(value="nombreUser") String userName,
 			@RequestParam(value="nombre") String nombre,
 			@RequestParam(value="apellido") String apellido,
@@ -34,10 +35,11 @@ public class UserControllerCRUD {
 			@RequestParam(value="role") String role,
 			@RequestParam(value="contrasena") String contrasena,
 			@RequestParam(value="pais") String pais
-			) {
+			) 
+	{
 		System.out.println("Entro");
-		
-		nombre += " " + apellido;
+		UserInfo user=new UserInfo();
+		nombre.concat(" ").concat(apellido);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setUsername(userName);
 		user.setCountry(pais);
