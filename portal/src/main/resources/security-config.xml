@@ -17,16 +17,10 @@
 	<beans:bean name="myAppUserDetailsService" class="com.fpiceno.portal.service.MyAppUserDetailsService"/>
 
 	<beans:bean name="userService"    class="com.fpiceno.portal.service.UserService"/>	      
-<<<<<<< HEAD
 	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>	
 	<beans:bean name="CorreoService"    class="com.fpiceno.portal.service.impl.CorreoServiceImpl"/>
 	<beans:bean name="UserServiceCRUD"    class="com.fpiceno.portal.service.impl.UserServiceImplCRUD"/>      
-=======
-	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>
-	<beans:bean name="CorreoService"    class="com.fpiceno.portal.service.impl.CorreoServiceImpl"/>	      
-	<beans:bean name="UserServiceCRUD"    class="com.fpiceno.portal.service.impl.UserServiceImplCRUD"/>
 	    
->>>>>>> master
 	<authentication-manager>
 		<authentication-provider user-service-ref="myAppUserDetailsService">
 		    <password-encoder ref="bcryptEncoder"/>

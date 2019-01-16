@@ -33,11 +33,11 @@ public class UsuarioEntitySqlTest {
 		usuario.setRole("ROLE_ADMIN");
 		usuario.setUsername("fpiceno");
 		
-		Integer id;
-	
-		assertNotNull(id=dao.Agrega(usuario));
-		System.out.println("identificador ********************-----------***********" +id);
-	
+//		Integer id;
+//	
+//		assertNotNull(id=dao.Agrega(usuario));
+//		System.out.println("identificador ********************-----------***********" +id);
+		dao.Agrega(usuario);
 	}
 
 	@Test

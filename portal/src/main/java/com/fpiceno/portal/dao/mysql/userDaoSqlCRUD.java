@@ -20,23 +20,13 @@ public class userDaoSqlCRUD implements UserDaoCRUD{
 	private SessionFactory sessionFactory;
 	
 	@Override
-<<<<<<< HEAD
+
 	public void Agrega(UserInfo user) {
 			System.out.println("entre al metodo*************: "+user);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
 		  //Integer id=(Integer) session.save(user);
 		   session.save(user);
-=======
-	public Integer Agrega(UserInfo user) {
-		System.out.println("entre al metodo*************: "+user);
-		Session session= sessionFactory.getCurrentSession();
-		Integer id=(Integer) session.save(user);
-		  
-		  
->>>>>>> master
-		  
-		  //return id;
 	}
 
 	@Override
@@ -57,10 +47,9 @@ public class userDaoSqlCRUD implements UserDaoCRUD{
 
 	@Override
 	public List<UserInfo> obtenTodos() {
-//		LOG.debug("REGRESANDO LA LISTA DE COLONIA ");
 		   Session session= sessionFactory.getCurrentSession();
 //		   Transaction trans=session.beginTransaction();
-		Query query=session.createQuery("from Producto");
+		Query query=session.createQuery("from UserInfo");
 		ArrayList<UserInfo> lista = (ArrayList<UserInfo>) query.list();
 //		trans.commit();
 		return lista;

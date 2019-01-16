@@ -35,7 +35,7 @@ public class UserDaoSqlTest {
 		UserInfo user = new UserInfo();
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		
-		user.setUsername("Rock");
+		user.setUsername("Rock2");
 		user.setCountry("EUA");
 		user.setEnabled((short)1);
 		user.setFullName("Fabian Piceno");
@@ -49,25 +49,32 @@ public class UserDaoSqlTest {
 
 	@Test
 	public void testActualiza() {
-//		Producto producto= new Producto();
-//		producto.setId(1);
-//		producto.setFechaAlta(new Date());
-//		producto.setFechaModificacion(new Date());
-//		producto.setNombre("aguacate1");
-//		producto.setObservaciones("observacione1s");
-//		producto.setTipoCalidad(TipoCalidad.STANDAR);
-//		producto.setUnidad(UnidadMedida.KG);
-//		producto.setPrecio(10.22);
-//		
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		UserInfo user= new UserInfo();
+		
+		//ID
+		user.setUsername("Rock");
+		
+		user.setCountry("Canada");
+		user.setFullName("Carlos Moran");
+		user.setEnabled((short)0);
+		user.setPassword(encoder.encode("123"));
+		user.setRole("ROLE_USER");
+		
 //		ProductoDao dao=new ProductoDaoSql();
 //		dao.Actualiza(producto);
 //		System.out.println(producto);
+		
+		//UserDaoCRUD dao=new UserDaoCRUD();
+		dao.Actualiza(user);
+		System.out.println(user);
 	}
 
 	@Test
 	public void testElimina() {
 		UserInfo user= new UserInfo();
-		user.setUsername("Adan");
+		user.setUsername("Rock2");
 		
 //		ProductoDao dao=new ProductoDaoSql();
 		dao.Elimina(user);

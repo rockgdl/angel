@@ -17,8 +17,8 @@ import com.fpiceno.portal.service.UserServiceCRUD;;
 @Controller
 @RequestMapping(value="/userCRUD")
 public class UserControllerCRUD {
-//	@Autowired
-//	private UserInfo user;
+	@Autowired
+	private UserInfo user;
 	
 	@Autowired
 	private UserServiceCRUD service;
@@ -38,7 +38,7 @@ public class UserControllerCRUD {
 			) 
 	{
 		System.out.println("Entro");
-		UserInfo user=new UserInfo();
+		//UserInfo user=new UserInfo();
 		nombre.concat(" ").concat(apellido);
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		user.setUsername(userName);
@@ -53,6 +53,21 @@ public class UserControllerCRUD {
 		service.agregarUser(user);
 		 
 		return "userForm";
+	}
+	
+	@RequestMapping(value="/mostrar")
+	public String Mostrar(ModelMap model) {
+		model.addAttribute("usuarios", service.getUsers());
+		
+		return "listaUsers";
+	}
+	
+	@RequestMapping(value="/eliminar", method=RequestMethod.POST)
+	public String Eliminar(@RequestParam(value="user") String userName) {
+		user.setUsername(userName);
+		service.EliminarUser(user);
+		System.out.println(user);		
+		return "listaUsers";
 	}
 	
 }
