@@ -31,6 +31,8 @@ public class Producto implements Serializable{
 	private TipoCalidad tipoCalidad;
 	@Enumerated(EnumType.STRING)
 	private UnidadMedida unidad;
+	@Enumerated(EnumType.STRING)
+	private TipoProducto tipoProducto;
 	@Column (name="observaciones")
 	private String observaciones;
 	@Column (name="precio")
@@ -85,14 +87,21 @@ public class Producto implements Serializable{
 	public void setPrecio(Double precio) {
 		this.precio = precio;
 	}
+	public TipoProducto getTipoProducto() {
+		return tipoProducto;
+	}
+	public void setTipoProducto(TipoProducto tipoProducto) {
+		this.tipoProducto = tipoProducto;
+	}
 	@Override
 	public String toString() {
 		return "Producto [id=" + id + ", nombre=" + nombre + ", fechaAlta="
 				+ fechaAlta + ", fechaModificacion=" + fechaModificacion
 				+ ", tipoCalidad=" + tipoCalidad + ", unidad=" + unidad
-				+ ", observaciones=" + observaciones + ", precio=" + precio
-				+ "]";
+				+ ", tipoProducto=" + tipoProducto + ", observaciones="
+				+ observaciones + ", precio=" + precio + "]";
 	}
+
 
 
 }
