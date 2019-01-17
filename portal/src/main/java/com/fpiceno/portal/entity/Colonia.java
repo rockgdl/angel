@@ -1,4 +1,4 @@
-package com.contpaq.facturacion.dto;
+package com.fpiceno.portal.entity;
 
 import java.io.Serializable;
 

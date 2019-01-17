@@ -2,7 +2,8 @@ package com.fpiceno.portal.dao;
 
 import java.util.List;
 
-import com.contpaq.facturacion.dto.Estado;
+import com.fpiceno.portal.entity.Estado;
+
 
 /**
  * Interfaz que determina el comportamiento de un Dao responsable de objetos estado

@@ -2,7 +2,8 @@ package com.fpiceno.portal.dao;
 
 import java.util.List;
 
-import com.contpaq.facturacion.dto.Colonia;
+import com.fpiceno.portal.entity.Colonia;
+
 
 
 /**
