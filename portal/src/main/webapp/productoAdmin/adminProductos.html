@@ -1,0 +1,170 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" >
+	<title>Administracion de Productos</title>
+ <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"  crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-table/1.13.1/bootstrap-table.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" crossorigin="anonymous">
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    
+    
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" ></script>
+	<link  type="text/css" rel="stylesheet" th:href="@{/resources/css/Layaout.css}">
+	<script type="text/javascript" th:src="@{/resources/js/adminProductos.js}"></script>
+</head>
+<body>
+
+   <main class="container">
+
+<!--    					Ventana modal para eliminar -->
+          <div class="modal fade" id="deleteventanaModal" tabindex="-1" role="dialog" aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
+            <form th:action="@{productos/deleteProducto}" >
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="etiquetaVentanaModal">Eliminar Tipo Prestamo</h5>       
+                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+            <div class="form-group">
+                <label for="idItemEdit">id: </label>
+                <input type="text" id="idItemdelete" name="id" placeholder="Id articulo" class="form-control" required="required" readonly="readonly">
+<!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
+                <label for="txtNombre">Item: </label>
+                <input type="text" id="txtItemDelete" name="txtItem" placeholder="Nombre del Item" class="form-control"  readonly="readonly">
+<!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
+            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button"  data-dismiss="modal"  >
+                            Cerrar
+                        </button>
+                         <button type="submit" class="btn btn-primary">Delete</button>
+                    </div>
+                </div>
+            </div>
+             </form>
+        </div>
+
+<!-- 			ventana modal para editar -->
+     <div class="modal fade" id="editventanaModal" tabindex="-1" role="dialog" aria-labelledby="etiquetaVentanaModal" aria-hidden="true">
+            <form th:action="@{productos/editProducto}" method="POST">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="etiquetaVentanaModal">Actualizar Tipo Prestamo</h5>       
+                        <button class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+            <div class="form-group">
+                <label for="idItemEdit">id: </label>
+                <input type="text" id="idItemEdit" name="idItemEdit" placeholder="Id articulo" class="form-control" required="required">
+<!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
+                <label for="txtNombre">Item: </label>
+                <input type="text" id="txtItemEdit" name="txtItem" placeholder="Nombre del Articulo" class="form-control" required="required">
+<!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
+            </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button"  data-dismiss="modal"  >
+                            Cerrar
+                        </button>
+                         <button type="submit" class="btn btn-primary">Update</button>
+                    </div>
+                </div>
+            </div>
+             </form>
+        </div>
+
+<!-- 	<div align="center"> -->
+<!-- 			<img src="https://dm2301files.storage.live.com/y4mBeoL_Om45HT9R7LQTQCXYb3dB3EB6MK55OjLU_AZsugCVJa_rIRdbl9CFOJPJv4gDVS9hq4hqUgP8h_4asXEZyOMmWlaOyYr-BWwd5HX5bCOEC-ZhAZgjUlHJTKuhvW83FiHy45Z2SumPoam1BYA3Syh9oGTlceVop9NtEHeG4bFQO0y2w7VVY2JgVG9bAYyscdHDSi7pNax6qjedU7arw/punto%20verde%201%20-%20web-01.jpg?psid=1&width=596&height=564" -->
+<!-- 				width="1000" height="300">  -->
+<!-- 	</div> -->
+	
+	<div>
+	
+	
+	 
+	
+	
+	
+      <table class="table table-bordered table-striped table-hovered" id="tablaItems" 	data-show-toggle="true"	data-show-columns="true" data-toggle="table">
+            <thead class="bg-primary text-white">
+            
+             <tr>
+	             <th data-field="state" data-checkbox="true"></th>
+				 <th data-field="id" class="text-center">#</th>
+				 <th data-field="Producto" class="text-center"> Producto </th>
+	             <th data-field="Alta" class="text-center"> Alta </th>
+				 <th data-field="Ultima modificacion" class="text-center"> Ultima modificiaci�n </th>
+				 <th data-field="Tipo Calidad" class="text-center"> Tipo Calidad</th>
+				 <th data-field="Unidad" class="text-center"> Unidad </th>
+				 <th data-field="Observacion" class="text-center"> Observaci�n </th>
+				 <th data-field="Precio " class="text-center"> Precio</th>
+				 <th data-field="Acciones " class="text-center"> Acciones</th>
+			</tr>
+            </thead>
+            <tbody>
+		 	<tr th:each="producto: ${productos}">
+	        <td class="bs-checkbox" ><input th:attr="data-index=${producto.id }" name="btSelectItem" type="checkbox"></td>
+	        <td class="text-center" th:text="${producto.id }"></td>
+	        <td class="text-center" th:text="${producto.nombre}"></td>
+	        <td class="text-center" th:text="${producto.fechaAlta}"></td>
+	        <td class="text-center" th:text="${producto.fechaModificacion}"></td>
+        	<td class="text-center" >	 
+				<select name="tipoCalidad">
+					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}"></option>	
+				</select> 
+			</td>
+			<td class="text-center">
+			 	<select name="unidad">
+					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option>
+				</select>
+			</td>
+	        <td class="text-center" th:text="${producto.observaciones}"></td>
+	        <td class="text-center" th:text="${producto.precio}"></td>
+	        <td class="text-center">
+	        
+	        <button class="btn btn-info text-white" type="button" data-toggle="modal" data-target="#editventanaModal"> 
+				<i class="fas fa-pencil-alt" ></i>
+        	</button>
+	        <button class="btn btn-danger text-white" type="button" data-toggle="modal" data-target="#deleteventanaModal"> 
+                	<i class="fas fa-trash-alt" th:id="'eliminar'+ ${producto.id}"  ></i>
+        	</button>
+            </td>
+	        </tr>
+	  
+ 
+            </tbody>
+        </table>
+		
+		
+	</div>
+		</main>
+	<div>
+			<p>Tel: 3646 3815</p>
+			<p>Whatssap: 3332018942</p>
+			<a>fruteria.verde@outlook.com</a>
+	</div>
+	
+	
+
+		
+		  
+</body>
+</html>
