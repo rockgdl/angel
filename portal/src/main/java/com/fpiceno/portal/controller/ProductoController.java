@@ -6,6 +6,7 @@ import java.util.Date;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
@@ -16,8 +17,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
 import com.fpiceno.portal.entity.Producto;
 import com.fpiceno.portal.entity.TipoCalidad;
+import com.fpiceno.portal.entity.TipoProducto;
 import com.fpiceno.portal.entity.UnidadMedida;
 import com.fpiceno.portal.service.ProductoService;
 
@@ -39,6 +42,7 @@ public class ProductoController  {
 		model.addAttribute("fecha", new Date());
 		model.addAttribute("calidades", TipoCalidad.values());
 		model.addAttribute("medidas", UnidadMedida.values());
+		model.addAttribute("tipos", TipoProducto.values());
  		return "adminProductos";
  	}
 	@RequestMapping(value="/deleteProducto")
@@ -55,6 +59,11 @@ public class ProductoController  {
 		model.addAttribute("fecha", new Date());
 		model.addAttribute("calidades", TipoCalidad.values());
 		model.addAttribute("medidas", UnidadMedida.values());
+		model.addAttribute("tipos", TipoProducto.values());
+		for(Producto p: servicio.getProducts())
+		{
+			System.out.println(p);
+		}
 		return "adminProductos";
 	}
 	
@@ -71,7 +80,9 @@ public class ProductoController  {
 			   @RequestParam(value="observacion",required = false) String observaciones,
 			   @RequestParam(value="precio",required = true) Double precio,
 			   @RequestParam(value="tipoCalidad",required = true) TipoCalidad calidad,
-			   @RequestParam(value="unidad",required = true) UnidadMedida unidad
+			   @RequestParam(value="unidad",required = true) UnidadMedida unidad,
+			   @RequestParam(value="tipoProducto",required = true) TipoProducto tipoProducto
+			   
 			) 
 			  
 	{
@@ -83,6 +94,7 @@ public class ProductoController  {
 		producto.setPrecio(precio);
 		producto.setTipoCalidad(calidad);
 		producto.setUnidad(unidad);
+		producto.setTipoProducto(tipoProducto);
 		Integer id=servicio.agregarProducto(producto);
 		model.addAttribute("id", id);
 //		System.out.println("id agregado "+model.);
@@ -92,26 +104,27 @@ public class ProductoController  {
 		model.addAttribute("fecha", new Date());
 		model.addAttribute("calidades", TipoCalidad.values());
 		model.addAttribute("medidas", UnidadMedida.values());
+		model.addAttribute("tipos", TipoProducto.values());
 		return "adminProductos";
 	}
 	@RequestMapping(value="/editProducto")
 	public String editaProducto(ModelMap model, @RequestParam(value="nombre",required = true) String nombre,
 			@RequestParam(value="modificacion",required = false) String modificaion,
 			@RequestParam(value="observacion",required = false) String observaciones,
-			@RequestParam(value="precio",required = true) Double precio,
-			@RequestParam(value="tipoCalidad",required = true) TipoCalidad calidad,
-			@RequestParam(value="unidad",required = true) UnidadMedida unidad,
+			@RequestParam(value="precio",required = false) Double precio,
+			@RequestParam(value="tipoCalidad",required = false) TipoCalidad calidad,
+			@RequestParam(value="unidad",required = false) UnidadMedida unidad,
 			@RequestParam(value="id",required = true) Integer id
 			) 
 			
 	{
-		System.out.println("parametros recibidos  modificacion"+ modificaion+" observacion: "+ observaciones+" precio: "+precio);
+		System.out.println("parametros recibidos  nombre"+ nombre+" observacion: "+ observaciones+" precio: "+precio);
 		producto.setFechaModificacion(new Date());
 		producto.setNombre(nombre);
-		producto.setObservaciones(observaciones);
-		producto.setPrecio(precio);
-		producto.setTipoCalidad(calidad);
-		producto.setUnidad(unidad);
+//		producto.setObservaciones(observaciones);
+//		producto.setPrecio(precio);
+//		producto.setTipoCalidad(calidad);
+//		producto.setUnidad(unidad);
 		producto.setId(id);
 		
 		servicio.ActualizaProducto(producto);
@@ -123,6 +136,7 @@ public class ProductoController  {
 		model.addAttribute("fecha", new Date());
 		model.addAttribute("calidades", TipoCalidad.values());
 		model.addAttribute("medidas", UnidadMedida.values());
+		model.addAttribute("tipos", TipoProducto.values());
 		return "adminProductos";
 	}
 //	@RequestMapping(value="/error")

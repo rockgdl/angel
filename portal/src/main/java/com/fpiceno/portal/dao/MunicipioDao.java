@@ -2,7 +2,8 @@ package com.fpiceno.portal.dao;
 
 import java.util.List;
 
-import com.contpaq.facturacion.dto.Municipio;
+import com.fpiceno.portal.entity.Municipio;
+
 /**
  * Interfaz que determina el comportamiento de un Dao responsable de objetos municipio
  * @author Fabian Piceno Roque 
