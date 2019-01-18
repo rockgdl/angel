@@ -171,20 +171,20 @@
 <!-- 	  th:selected="${calidad.toString()==${producto.tipoCalidad.toString()}"      <td class="text-center" th:text="${producto.fechaAlta}"></td> -->
 	        <td class="text-center" th:text="${producto.tipoCalidad}"></td>
 	        <td class="text-center" th:text="${producto.fechaModificacion}"></td>
-        	<td class="text-center" >	 
-				<select name="tipoCalidad">
-					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}" th:selected="${calidad.toString() == ${producto.tipoCalidad}"  ></option>	
-				</select> 
+        	<td class="text-center" th:text="${producto.tipoCalidad}" >	 
+<!-- 				<select name="tipoCalidad"> -->
+<!-- 					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}" th:selected="${calidad.toString() == ${producto.tipoCalidad}"  ></option>	 -->
+<!-- 				</select>  -->
 			</td>
-			<td class="text-center">
-			 	<select name="unidad">
-					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option>
-				</select>
+			<td class="text-center" th:text="${producto.unidad}">
+<!-- 			 	<select name="unidad"> -->
+<!-- 					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option> -->
+<!-- 				</select> -->
 			</td>
-			<td class="text-center">
-			 	<select name="tipos">
-					<option th:each="tipo: ${tipos}" th:value="${tipo}" th:text="${tipo.toString()}"></option>
-				</select>
+			<td class="text-center" th:text="${producto.tipoProducto}">
+<!-- 			 	<select name="tipos"> -->
+<!-- 					<option th:each="tipo: ${tipos}" th:value="${tipo}" th:text="${tipo.toString()}"></option> -->
+<!-- 				</select> -->
 			</td>
 	        <td class="text-center" th:text="${producto.observaciones}"></td>
 	        <td class="text-center" th:text="${producto.precio}"></td>
