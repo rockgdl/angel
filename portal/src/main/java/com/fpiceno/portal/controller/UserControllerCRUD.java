@@ -28,7 +28,8 @@ public class UserControllerCRUD {
 		return "userForm";
 	}
 	@RequestMapping(value="/createUser", method=RequestMethod.POST)
-	public String create(@RequestParam(value="nombreUser") String userName,
+	public String create(ModelMap model,
+			@RequestParam(value="nombreUser") String userName,
 			@RequestParam(value="nombre") String nombre,
 			@RequestParam(value="apellido") String apellido,
 			@RequestParam(value="activo") short activo,
@@ -37,6 +38,7 @@ public class UserControllerCRUD {
 			@RequestParam(value="pais") String pais
 			) 
 	{
+		model.addAttribute("usuarios", service.getUsers());
 		System.out.println("Entro");
 		//UserInfo user=new UserInfo();
 		nombre.concat(" ").concat(apellido);
@@ -52,7 +54,7 @@ public class UserControllerCRUD {
 		
 		service.agregarUser(user);
 		 
-		return "userForm";
+		return "listaUsers";
 	}
 	
 	@RequestMapping(value="/mostrar")
@@ -63,11 +65,40 @@ public class UserControllerCRUD {
 	}
 	
 	@RequestMapping(value="/eliminar", method=RequestMethod.POST)
-	public String Eliminar(@RequestParam(value="user") String userName) {
+	public String Eliminar(ModelMap model, @RequestParam(value="user") String userName) {
+		model.addAttribute("usuarios", service.getUsers());
 		user.setUsername(userName);
 		service.EliminarUser(user);
 		System.out.println(user);		
 		return "listaUsers";
+	}
+	
+	@RequestMapping(value="/update", method=RequestMethod.POST)
+	public String Actualizar (ModelMap model,
+			@RequestParam(value="nombreUser") String userName,
+			@RequestParam(value="nombre") String nombre,
+			@RequestParam(value="apellido") String apellido,
+			@RequestParam(value="activo") short activo,
+			@RequestParam(value="role") String role,
+			@RequestParam(value="contrasena") String contrasena,
+			@RequestParam(value="pais") String pais) {
+		
+			model.addAttribute("usuarios", service.getUsers());
+			
+			nombre.concat(" ").concat(apellido);
+			BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+			user.setUsername(userName);
+			user.setCountry(pais);
+			user.setEnabled(activo);
+			user.setFullName(nombre);
+			user.setPassword(encoder.encode(contrasena));
+			user.setRole(role);
+			
+			System.out.println(user);
+			
+			service.ActualizaUser(user);
+			
+			return "listaUsers";
 	}
 	
 }
