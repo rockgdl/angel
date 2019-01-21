@@ -171,9 +171,9 @@
 				 <th data-field="Producto" class="text-center" th:text="Producto"></th>
 	             <th data-field="Alta" class="text-center" th:text="Alta" data-visible="false"></th>
 				 <th data-field="Ultima modificacion" class="text-center" data-visible="false" >Ultima modificacion</th>
-				 <th data-field="Tipo Calidad" class="text-center">Tipo Calidad</th>
+				 <th data-field="TipoCalidad" class="text-center">Tipo Calidad</th>
 				 <th data-field="Unidad" class="text-center" th:text="Unidad"> </th>
-				 <th data-field="Tipo Producto" class="text-center" >Tipo Producto </th>
+				 <th data-field="TipoProducto" class="text-center" >Tipo Producto </th>
 				 <th data-field="Observacion" class="text-center" th:text="Observacion"></th>
 				 <th data-field="Precio" class="text-center" th:text="Precio"> </th>
 				 <th data-field="Acciones " class="text-center" th:text="Acciones"> </th>
