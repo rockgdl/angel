@@ -8,14 +8,39 @@ $(document).ready(function(){
 
  $("#tablaItems").on("check.bs.table", function (e, row) {
 	 console.log("sobre los check");
-   checkedRows.push({id: row.id, nombre: row.Producto});
+   checkedRows.push({id: row.id, nombre: row.Producto, observaciones: row.Observacion, precio: row.Precio,fechaAlta: row.Alta,
+	   tipoCalidad:row.TipoCalidad, unidad:row.Unidad,tipoProducto: row.TipoProducto});
    
    $('button[id^="edit"]').click(function(){
 	   $.each(checkedRows, function(index, value) {
-	   console.log(value.id, value.nombre);
+	   console.log(value.id, value.fechaAlta, value.tipoCalidad);
 //		   $("#editventanaModal").modal();
 		   $("#txtItemEdit").val(value.nombre.trim());
+		   $("#observacionesEdit").val(value.observaciones.trim());
+		   $("#precioEdit").val(value.precio.trim());
 		   $("#idItemEdit").val(value.id.trim());
+//		   var d = Date.parse(value.fechaAlta.trim());
+		   $("#fechaAltaEdit").val(value.fechaAlta);
+		   
+		    $("#tipoCalidadEdit").find('option').each(function( i, opt ) {
+		    	if( opt.value == value.tipoCalidad ) 
+	        		{
+		    			$(opt).attr('selected', 'selected');
+				    }
+				    });
+		    $("#unidadEdit").find('option').each(function( i, opt ) {
+		    	if( opt.value == value.unidad ) 
+		    	{
+		    		$(opt).attr('selected', 'selected');
+		    	}
+		    });
+		    $("#tipoProductoEdit").find('option').each(function( i, opt ) {
+		    	if( opt.value == value.tipoProducto ) 
+		    	{
+		    		$(opt).attr('selected', 'selected');
+		    	}
+		    });
+		   
 		   
 	   });
 	 });

@@ -97,7 +97,7 @@ public class PropiedadesPortal {
     public final static String FORMATO_FECHA_DB2 = "dd.MM.yyyy";
     public final static String FORMATO_FECHA_DB2_HORA = "hh.mm.ss";
     public final static String FORMATO_FECHA_CONSULTA = "dd/MM/yyyy";
-	private final static SimpleDateFormat FECHABIZAGI = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
+	private final static SimpleDateFormat FORMATO_FECHA_MYSQL = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 	private final static SimpleDateFormat FECHAPORTAL = new SimpleDateFormat("dd/MM/yyyy");
 	private final static SimpleDateFormat FECHAPORTALTOBIZAGI = new SimpleDateFormat("yyyy-MM-dd");
 //	private final static SimpleDateFormat FECHABIZAGI = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss");
@@ -122,15 +122,12 @@ public class PropiedadesPortal {
 		return correos;
 	}
 
-	public static SimpleDateFormat getFechabizagi() {
-		return FECHABIZAGI;
+
+
+	public static SimpleDateFormat getFormatoFechaMysql() {
+		return FORMATO_FECHA_MYSQL;
 	}
-
-
-	public static SimpleDateFormat getFechaportal() {
-		return FECHAPORTAL;
-	}
-
+	
 
 	public static SimpleDateFormat getFechaportaltobizagi() {
 		return FECHAPORTALTOBIZAGI;

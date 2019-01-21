@@ -70,7 +70,7 @@
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="etiquetaVentanaModal">Eliminar Tipo Prestamo</h5>       
+                        <h5 class="modal-title" id="etiquetaVentanaModal">Eliminar Producto</h5>       
                         <button class="close" data-dismiss="modal" aria-label="Cerrar">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -110,12 +110,30 @@
                     </div>
                     <div class="modal-body">
             <div class="form-group">
+                <input type="hidden" id="fechaAltaEdit" name="fechaAltaEdit">
                 <label for="idItemEdit">id: </label>
                 <input type="text" id="idItemEdit" name="id" placeholder="Id articulo" class="form-control" required="required">
 <!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
                 <label for="txtNombre">Nombre Producto: </label>
-                <input type="text" id="txtItemEdit" name="nombre" placeholder="Nombre del Articulo" class="form-control" required="required">
+                <input type="text" id="txtItemEdit" name="nombreEdit" placeholder="Nombre del Articulo" class="form-control" required="required">
 <!--                 <small class="form-text text-muted">Nombre de usuario del usuario</small> -->
+ 				<label for="tipoCalidadEdit">Tipo Calidad: </label>
+
+				<select name="tipoCalidadEdit" id="tipoCalidadEdit">
+					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}"></option>	
+				</select> <br>
+				     <label for="tipoProductoEdit">Tipo Producto: </label>
+				<select name="tipoProductoEdit" id="tipoProductoEdit">
+					<option th:each="tipo: ${tipos}" th:value="${tipo}" th:text="${tipo.toString()}"></option>	
+				</select> <br>
+				   <label for="unidadEdit">Unidad: </label>
+				<select name="unidadEdit" id="unidadEdit" >
+								<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option>
+				</select><br>
+					   <label for="observacionesEdit">Observaciones: </label>
+				<textarea name="observacionEdit" rows="4" cols="20"  id="observacionesEdit"></textarea> <br>
+				<label >Precio </label>
+				<input type="text" name="precioEdit" id="precioEdit"><br>
             </div>
                     </div>
                     <div class="modal-footer">
@@ -153,11 +171,11 @@
 				 <th data-field="Producto" class="text-center" th:text="Producto"></th>
 	             <th data-field="Alta" class="text-center" th:text="Alta" data-visible="false"></th>
 				 <th data-field="Ultima modificacion" class="text-center" data-visible="false" >Ultima modificacion</th>
-				 <th data-field="Tipo Calidad" class="text-center">Tipo Calidad</th>
+				 <th data-field="TipoCalidad" class="text-center">Tipo Calidad</th>
 				 <th data-field="Unidad" class="text-center" th:text="Unidad"> </th>
-				 <th data-field="Tipo Producto" class="text-center" >Tipo Producto </th>
+				 <th data-field="TipoProducto" class="text-center" >Tipo Producto </th>
 				 <th data-field="Observacion" class="text-center" th:text="Observacion"></th>
-				 <th data-field="Precio " class="text-center" th:text="Precio"> </th>
+				 <th data-field="Precio" class="text-center" th:text="Precio"> </th>
 				 <th data-field="Acciones " class="text-center" th:text="Acciones"> </th>
 			</tr>
             </thead>
@@ -168,23 +186,23 @@
 	        <td class="bs-checkbox" ><input th:attr="data-index=${producto.id-1 }" name="btSelectItem" type="checkbox"></td>
 	        <td class="text-center" th:text="${producto.id }"></td>
 	        <td class="text-center" th:text="${producto.nombre}"></td>
-<!-- 	  th:selected="${calidad.toString()==${producto.tipoCalidad.toString()}"      <td class="text-center" th:text="${producto.fechaAlta}"></td> -->
-	        <td class="text-center" th:text="${producto.tipoCalidad}"></td>
+		    <td class="text-center" th:text="${producto.fechaAlta}"></td>
 	        <td class="text-center" th:text="${producto.fechaModificacion}"></td>
-        	<td class="text-center" >	 
-				<select name="tipoCalidad">
-					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}" th:selected="${calidad.toString() == ${producto.tipoCalidad}"  ></option>	
-				</select> 
+<!-- 	        <td class="text-center" th:text="${producto.tipoCalidad}"></td> -->
+        	<td class="text-center" th:text="${producto.tipoCalidad}" >	 
+<!-- 				<select name="tipoCalidad"> -->
+<!-- 					<option th:each="calidad: ${calidades}" th:value="${calidad}" th:text="${calidad.toString()}" th:selected="${calidad.toString() == ${producto.tipoCalidad}"  ></option>	 -->
+<!-- 				</select>  -->
 			</td>
-			<td class="text-center">
-			 	<select name="unidad">
-					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option>
-				</select>
+			<td class="text-center" th:text="${producto.unidad}">
+<!-- 			 	<select name="unidad"> -->
+<!-- 					<option th:each="medida: ${medidas}" th:value="${medida}" th:text="${medida.toString()}"></option> -->
+<!-- 				</select> -->
 			</td>
-			<td class="text-center">
-			 	<select name="tipos">
-					<option th:each="tipo: ${tipos}" th:value="${tipo}" th:text="${tipo.toString()}"></option>
-				</select>
+			<td class="text-center" th:text="${producto.tipoProducto}">
+<!-- 			 	<select name="tipos"> -->
+<!-- 					<option th:each="tipo: ${tipos}" th:value="${tipo}" th:text="${tipo.toString()}"></option> -->
+<!-- 				</select> -->
 			</td>
 	        <td class="text-center" th:text="${producto.observaciones}"></td>
 	        <td class="text-center" th:text="${producto.precio}"></td>
@@ -193,7 +211,7 @@
 	        <button class="btn btn-info text-white" type="button" data-toggle="modal" data-target="#editventanaModal" th:id="'edit'+ ${producto.id}" > 
 				<i class="fas fa-pencil-alt"  ></i>
         	</button>
-	        <button class="btn btn-danger text-white" type="button" data-toggle="modal" data-target="#deleteventanaModal" th:id="'eliminar'+ ${producto.id}"> 
+	        <button class="btn btn-danger text-white" type="button" data-toggle="modal" data-target="#deleteventanaModal" th:id="'delete'+ ${producto.id}"> 
                 	<i class="fas fa-trash-alt"   ></i>
         	</button>
             </td>
