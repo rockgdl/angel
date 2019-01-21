@@ -8,14 +8,19 @@ $(document).ready(function(){
 
  $("#tablaItems").on("check.bs.table", function (e, row) {
 	 console.log("sobre los check");
-   checkedRows.push({id: row.id, nombre: row.Producto});
+   checkedRows.push({id: row.id, nombre: row.Producto, observaciones: row.Observacion, precio: row.Precio,fechaAlta: row.Alta});
    
    $('button[id^="edit"]').click(function(){
 	   $.each(checkedRows, function(index, value) {
-	   console.log(value.id, value.nombre);
+	   console.log(value.id, value.fechaAlta);
 //		   $("#editventanaModal").modal();
 		   $("#txtItemEdit").val(value.nombre.trim());
+		   $("#observacionesEdit").val(value.observaciones.trim());
+		   $("#precioEdit").val(value.precio.trim());
 		   $("#idItemEdit").val(value.id.trim());
+//		   var d = Date.parse(value.fechaAlta.trim());
+		   $("#fechaAltaEdit").val(value.fechaAlta);
+		   
 		   
 	   });
 	 });

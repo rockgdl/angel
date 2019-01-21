@@ -1,7 +1,12 @@
 package com.fpiceno.portal.controller;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
+
+
+
 
 
 
@@ -18,6 +23,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 
+
+
+
+import com.fpiceno.portal.bl.PropiedadesPortal;
 import com.fpiceno.portal.entity.Producto;
 import com.fpiceno.portal.entity.TipoCalidad;
 import com.fpiceno.portal.entity.TipoProducto;
@@ -108,23 +117,38 @@ public class ProductoController  {
 		return "adminProductos";
 	}
 	@RequestMapping(value="/editProducto")
-	public String editaProducto(ModelMap model, @RequestParam(value="nombre",required = true) String nombre,
+	public String editaProducto(ModelMap model, @RequestParam(value="nombreEdit",required = true) String nombre,
 			@RequestParam(value="modificacion",required = false) String modificaion,
-			@RequestParam(value="observacion",required = false) String observaciones,
-			@RequestParam(value="precio",required = false) Double precio,
-			@RequestParam(value="tipoCalidad",required = false) TipoCalidad calidad,
-			@RequestParam(value="unidad",required = false) UnidadMedida unidad,
-			@RequestParam(value="id",required = true) Integer id
+			@RequestParam(value="observacionEdit",required = false) String observaciones,
+			@RequestParam(value="precioEdit",required = false) Double precio,
+			@RequestParam(value="tipoCalidadEdit",required = false) TipoCalidad calidad,
+			@RequestParam(value="unidadEdit",required = false) UnidadMedida unidad,
+			@RequestParam(value="id",required = true) Integer id,
+			@RequestParam(value="tipoProductoEdit",required = true) TipoProducto tipo,
+			@RequestParam(value="fechaAltaEdit",required = true) String fechaAlta
+			
 			) 
 			
 	{
-		System.out.println("parametros recibidos  nombre"+ nombre+" observacion: "+ observaciones+" precio: "+precio);
+		System.out.println("parametros recibidos  nombre"+ nombre+" observacion: "+ observaciones+" precio: "+precio+" fecha alta:" +fechaAlta);
 		producto.setFechaModificacion(new Date());
 		producto.setNombre(nombre);
-//		producto.setObservaciones(observaciones);
-//		producto.setPrecio(precio);
-//		producto.setTipoCalidad(calidad);
-//		producto.setUnidad(unidad);
+		producto.setObservaciones(observaciones);
+		producto.setPrecio(precio);
+		producto.setTipoCalidad(calidad);
+		producto.setUnidad(unidad);
+		producto.setTipoProducto(tipo);
+		producto.setFechaModificacion(new Date());
+//		FORMATO_FECHA_MYSQL
+		SimpleDateFormat sdf= PropiedadesPortal.getFormatoFechaMysql();
+		try {
+			producto.setFechaAlta(sdf.parse(fechaAlta));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+//		producto.setFechaAlta(fechaAlta);
+		
 		producto.setId(id);
 		
 		servicio.ActualizaProducto(producto);
