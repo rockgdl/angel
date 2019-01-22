@@ -22,11 +22,13 @@
 		<security:intercept-url pattern="/userCRUD/createUser" access="permitAll" />
 		<security:intercept-url pattern="/portal/userCRUD/createUser" access="permitAll" />
 		<security:intercept-url pattern="/userCRUD/**" access="permitAll" />
+
 		
 		
 		
 		
 		
+		<security:intercept-url pattern="/**" access="permitAll" />
 <!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
 		
 <!-- 		<intercept-url pattern="/productos/**" access="isAuthenticated()" /> -->
