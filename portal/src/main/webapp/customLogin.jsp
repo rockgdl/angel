@@ -43,7 +43,7 @@
 	  </div>
   
 </form>
-<div class="copy-text">Created with <i class="fa fa-heart"></i> by <a href="http://grafreez.com">Grafreez.com</a></div>
+<div class="copy-text">Creado por Fabian piceno <i class="fa fa-heart"></i> by <a href="http://grafreez.com">fpiceno.com</a></div>
 		</div>
 		<div class="col-md-8 banner-sec">
             <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -55,7 +55,7 @@
             <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
 <!--       <img class="d-block img-fluid"  src="resources/static/imagenes/puntoverde.jpg" alt="First slide"> -->
-      <img class="d-block img-fluid"  src="https://dm2301files.storage.live.com/y4mBeoL_Om45HT9R7LQTQCXYb3dB3EB6MK55OjLU_AZsugCVJa_rIRdbl9CFOJPJv4gDVS9hq4hqUgP8h_4asXEZyOMmWlaOyYr-BWwd5HX5bCOEC-ZhAZgjUlHJTKuhvW83FiHy45Z2SumPoam1BYA3Syh9oGTlceVop9NtEHeG4bFQO0y2w7VVY2JgVG9bAYyscdHDSi7pNax6qjedU7arw/punto%20verde%201%20-%20web-01.jpg?psid=1&width=596&height=564" alt="First slide">
+      <img class="d-block img-fluid"  src="<%=request.getContextPath()%>/resources/imagenes/puntoverde.jpg" alt="First slide">
       <div class="carousel-caption d-none d-md-block">
         <div class="banner-text">
 <!--             <h2>This is Heaven</h2> -->
