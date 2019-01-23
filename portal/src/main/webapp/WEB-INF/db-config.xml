@@ -31,8 +31,7 @@
 			   <prop key="hibernate.dialect">${hibernate.dialect}</prop>
 			   <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
 			   <prop key="hibernate.format_sql">${hibernate.format_sql}</prop>			   
-			   <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>			   
-			</props>
+			   <prop key="hibernate.hbm2ddl.auto">${hibernate.hbm2ddl}</prop>			   			</props>
 	    </property>
         <property name="packagesToScan" value="com.fpiceno.portal.entity"></property> 
 	</bean>
@@ -49,5 +48,7 @@
 	<bean name="correoDao" class="com.fpiceno.portal.dao.mysql.CorreroDaoMysql"/>
 	<bean name="user" class="com.fpiceno.portal.entity.UserInfo"/>
 	<bean name="userDaoCRUD" class="com.fpiceno.portal.dao.mysql.userDaoSqlCRUD"/>
+	<bean name="clienteDao" class="com.fpiceno.portal.dao.mysql.ClienteDaoSql"/>
+	<bean name="productoDao" class="com.fpiceno.portal.dao.mysql.PedidosDaoSql"/>
 	<tx:annotation-driven transaction-manager="transactionManager" /> 		
 </beans> 

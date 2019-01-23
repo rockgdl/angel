@@ -18,6 +18,7 @@ public class UserController {
 	private  IUserService service;
 	@RequestMapping(value="/home")
 	public String home(ModelMap model, Authentication authentication) {
+		System.err.println("error intentando mapear al usuario ");
 		authentication.getPrincipal();
 		model.addAttribute("user", service.getDataByUserName(authentication.getName()));
  		return "user-info";
