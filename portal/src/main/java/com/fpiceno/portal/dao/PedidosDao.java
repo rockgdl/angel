@@ -8,7 +8,7 @@ import com.fpiceno.portal.entity.Pedidos;
 public interface PedidosDao {
 	
 	
-	public void Agrega(Pedidos pedidos);
+	public Integer Agrega(Pedidos pedidos);
 	public void Actualiza (Pedidos pedidos);
 	public void Elimina(Pedidos pedidos);
 	public List<Pedidos>obtenTodos();

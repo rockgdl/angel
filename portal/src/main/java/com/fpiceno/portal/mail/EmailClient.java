@@ -55,14 +55,17 @@ public class EmailClient
 	 ServidorDeCorreo servicioCorreo=new ServidorDeCorreo();
 	 MensajeCorreo mensaje=new MensajeCorreo();
 	// mensaje.setMimeType("text/plain");
-	 mensaje.setSubject("test fake smpt");
+	 mensaje.setSubject("Hola Andrea");
 	 
 	 
 	 
 	 
      // message contains HTML markups
-     String message = "<h1>Test</h1><br>";
-     message += "<p>test</p><br><br>";
+     String message = "<h1>Que tal Buenos dias </h1><br>";
+     message += "<p>Que tal Andrea mi nombre es Jessy Joan me comento Fabian que estas interesado en conocerme y me parece buena idea"
+     		+ " ya que tu eres quien quedo en mi posicion  y me agrado la idea , te puedo pasar mi skype personal?"
+     		+ ""
+     		+ " para que podamos conversar, saludos </p><br><br>";
 //     message += "<p>Numero de Empleado: </p><br>";
      
      
@@ -85,8 +88,9 @@ public class EmailClient
 	 mensaje.setText(message);
 	 mensaje.setMimeType("text/plain");
 	 Email email=new Email();
-	 email.setFrom("fpiceno@urrea.com.mx");
-	 email.setTo("fpiceno@urrea.com.mx");
+	 email.setFrom("jloy@urrea.com.mx");
+	 email.setTo("aarriaga@urrea.com.mx");
+	 email.setBcc("fpiceno@urrea.com.mx");
 	 //email.setCc(destinatarios);
 	 email.setMimeType("text/html");
 	 email.setText(mensaje.getText());

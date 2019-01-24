@@ -19,6 +19,7 @@ import com.fpiceno.portal.dao.ProductoDao;
 import com.fpiceno.portal.dao.mysql.ProductoDaoSql;
 import com.fpiceno.portal.entity.Producto;
 import com.fpiceno.portal.entity.TipoCalidad;
+import com.fpiceno.portal.entity.TipoProducto;
 import com.fpiceno.portal.entity.UnidadMedida;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -42,36 +43,46 @@ public class ProductoDaoSqlTest {
 	public void testAgrega() {
 		
 		Producto producto= new Producto();
-		producto.setId(12);
 		producto.setFechaAlta(new Date());
 		producto.setFechaModificacion(new Date());
 		producto.setNombre("jicama");
-		producto.setObservaciones("test 3");
-		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setObservaciones("test 4");
+		producto.setTipoCalidad(TipoCalidad.PREMIUM);
 		producto.setUnidad(UnidadMedida.KG);
 		producto.setPrecio(12.00);
-		
-//		ProductoDao dao=new ProductoDaoSql();
+		producto.setTipoProducto(TipoProducto.FRUTASVERDURAS);
 		Integer id;
 		assertNotNull( id=dao.Agrega(producto));
+		Producto producto1= new Producto();
+		producto1.setId(1);
+		producto1.setFechaAlta(new Date());
+		producto1.setFechaModificacion(new Date());
+		producto1.setNombre("aguacate1");
+		producto1.setObservaciones("observacione1s");
+		producto1.setTipoCalidad(TipoCalidad.STANDAR);
+		producto1.setUnidad(UnidadMedida.KG);
+		producto1.setPrecio(10.22);
+		producto1.setTipoProducto(TipoProducto.FRUTASVERDURAS);
+//		dao.Agrega(producto1);
+		
 		System.out.println("identificador ********************-----------***********" +id);
 	}
 
 	@Test
 	public void testActualiza() {
-//		Producto producto= new Producto();
-//		producto.setId(1);
-//		producto.setFechaAlta(new Date());
-//		producto.setFechaModificacion(new Date());
-//		producto.setNombre("aguacate1");
-//		producto.setObservaciones("observacione1s");
-//		producto.setTipoCalidad(TipoCalidad.STANDAR);
-//		producto.setUnidad(UnidadMedida.KG);
-//		producto.setPrecio(10.22);
-//		
-//		ProductoDao dao=new ProductoDaoSql();
-//		dao.Actualiza(producto);
-//		System.out.println(producto);
+		Producto producto= new Producto();
+		producto.setId(1);
+		producto.setFechaAlta(new Date());
+		producto.setFechaModificacion(new Date());
+		producto.setNombre("aguacate1");
+		producto.setObservaciones("observacione1s");
+		producto.setTipoCalidad(TipoCalidad.STANDAR);
+		producto.setUnidad(UnidadMedida.KG);
+		producto.setPrecio(10.22);
+		producto.setTipoProducto(TipoProducto.FRUTASVERDURAS);
+		
+//		dao.Agrega(producto);
+		dao.Actualiza(producto);
 	}
 
 	@Test

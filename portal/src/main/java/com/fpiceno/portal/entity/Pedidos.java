@@ -2,15 +2,22 @@ package com.fpiceno.portal.entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 @Entity
 @Table (name="pedidos")
@@ -22,15 +29,20 @@ public class Pedidos  implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.SEQUENCE)
 	private Integer numPedido;
-	@Column (name="fechaalta")
+	@Column (name="fechaalta", updatable=false)
 	private Date fechaAlta;
 	@Column (name="fechamodificacion")
 	private Date fechaModificacion;
 	@Column (name="activo")
 	private Integer activo;
-	@ManyToOne
-	@JoinColumn(name="IdCliente")
-	private List<Producto> productos;
+//	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
+//	private List<Producto>productos;
+	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.EAGER)
+	@JoinTable(name = "pedidos_productos",joinColumns = @JoinColumn(name = "productos_id"),inverseJoinColumns = @JoinColumn(name = "pedidos_id"))
+	private Set<Producto> productos = new HashSet<Producto>();
+	
+	
+	
 	public Integer getNumPedido() {
 		return numPedido;
 	}
@@ -55,10 +67,10 @@ public class Pedidos  implements Serializable {
 	public void setActivo(Integer activo) {
 		this.activo = activo;
 	}
-	public List<Producto> getProductos() {
+	public Set<Producto> getProductos() {
 		return productos;
 	}
-	public void setProductos(List<Producto> productos) {
+	public void setProductos(Set<Producto> productos) {
 		this.productos = productos;
 	}
 	@Override

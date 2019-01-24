@@ -6,23 +6,26 @@ import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.fpiceno.portal.dao.PedidosDao;
 import com.fpiceno.portal.entity.Cliente;
 import com.fpiceno.portal.entity.Pedidos;
+import com.fpiceno.portal.entity.UserInfo;
 @Transactional
 public class PedidosDaoSql implements PedidosDao {
 	
+	@Autowired
 	private SessionFactory sessionFactory;
 
 	@Override
-	public void Agrega(Pedidos pedidos) {
+	public Integer Agrega(Pedidos pedidos) {
 		System.out.println("entre al metodo*************: "+pedidos);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
 		  //Integer id=(Integer) session.save(user);
-		   session.save(pedidos);
+		   return (Integer) session.save(pedidos);
 	}
 
 	@Override
@@ -51,8 +54,12 @@ public class PedidosDaoSql implements PedidosDao {
 
 	@Override
 	public Pedidos obtenById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+
+		   Session session= sessionFactory.getCurrentSession();
+//		   Transaction trans=session.beginTransaction();
+		   Pedidos pedidos=new Pedidos();
+		pedidos =  (Pedidos) session.get(Pedidos.class, id);
+		return pedidos;
 	}
 
 	@Override

@@ -3,12 +3,14 @@ package com.fpiceno.portal.dao.mysql;
 import java.util.ArrayList;
 import java.util.List;
 
+
 //import org.apache.log4j.Logger;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.fpiceno.portal.dao.ColoniaDao;
 import com.fpiceno.portal.entity.Colonia;
@@ -21,7 +23,7 @@ import com.fpiceno.portal.entity.Colonia;
 public class ColoniaDaoSql implements ColoniaDao {
 //	private final static Logger LOG = Logger.getLogger(EquipoDaoHibernate.class);
 
-	
+	@Autowired
 	private SessionFactory sessionFactory;
 	
 	public Session getSession() {

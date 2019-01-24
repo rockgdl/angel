@@ -13,7 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-import org.hibernate.annotations.IndexColumn;
 @Entity
 @Table (name="cliente")
 public class Cliente implements Serializable{
@@ -33,10 +32,7 @@ public class Cliente implements Serializable{
 	private String telefono;
 	@Column (name="correo")
 	private String correo;
-	@OneToMany(cascade= CascadeType.ALL)
-	@JoinColumn(name="IdCliente")
-	@IndexColumn(name="idx")
-	private List<Pedidos> pedidos;
+
 	
 	public Integer getId() {
 		return id;
@@ -68,18 +64,13 @@ public class Cliente implements Serializable{
 	public void setCorreo(String correo) {
 		this.correo = correo;
 	}
-	public List<Pedidos> getPedidos() {
-		return pedidos;
-	}
-	public void setPedidos(List<Pedidos> pedidos) {
-		this.pedidos = pedidos;
-	}
 	@Override
 	public String toString() {
 		return "Cliente [id=" + id + ", nombreComercial=" + nombreComercial
 				+ ", Domicilio=" + Domicilio + ", telefono=" + telefono
-				+ ", correo=" + correo + ", pedidos=" + pedidos + "]";
+				+ ", correo=" + correo + "]";
 	}
+
 	
 	
 	

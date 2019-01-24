@@ -38,6 +38,7 @@ public class ProductoDaoSql implements ProductoDao {
 
 	@Override
 	public void Actualiza(Producto producto) {
+			System.out.println("producto actualizado "+producto);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Transaction tx=session.beginTransaction();
 		   session.update(producto);
