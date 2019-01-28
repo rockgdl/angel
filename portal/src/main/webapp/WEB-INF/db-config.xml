@@ -48,7 +48,7 @@
 	<bean name="correoDao" class="com.fpiceno.portal.dao.mysql.CorreroDaoMysql"/>
 	<bean name="user" class="com.fpiceno.portal.entity.UserInfo"/>
 	<bean name="userDaoCRUD" class="com.fpiceno.portal.dao.mysql.userDaoSqlCRUD"/>
-	<bean name="clienteDao" class="com.fpiceno.portal.dao.mysql.ClienteDaoSql"/>
-	<bean name="productoDao" class="com.fpiceno.portal.dao.mysql.PedidosDaoSql"/>
+<!-- 	<bean name="clienteDao" class="com.fpiceno.portal.dao.mysql.ClienteDaoSql"/> -->
+<!-- 	<bean name="productoDao" class="com.fpiceno.portal.dao.mysql.PedidosDaoSql"/> -->
 	<tx:annotation-driven transaction-manager="transactionManager" /> 		
 </beans> 

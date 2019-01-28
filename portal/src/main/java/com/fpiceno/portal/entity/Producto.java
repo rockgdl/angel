@@ -46,7 +46,7 @@ public class Producto implements Serializable{
 	private String observaciones;
 	@Column (name="precio")
 	private Double precio;
-	@ManyToMany(mappedBy = "productos")
+	@ManyToMany(mappedBy = "productos" )
 	private Set<Pedidos> pedidos = new HashSet<Pedidos>();
 	
 
@@ -120,8 +120,7 @@ public class Producto implements Serializable{
 				+ fechaAlta + ", fechaModificacion=" + fechaModificacion
 				+ ", tipoCalidad=" + tipoCalidad + ", unidad=" + unidad
 				+ ", tipoProducto=" + tipoProducto + ", observaciones="
-				+ observaciones + ", precio=" + precio + ", pedidos=" + pedidos
-				+ "]";
+				+ observaciones + ", precio=" + precio +  "]";
 	}
 
 

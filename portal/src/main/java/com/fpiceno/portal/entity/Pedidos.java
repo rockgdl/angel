@@ -37,10 +37,9 @@ public class Pedidos  implements Serializable {
 	private Integer activo;
 //	@OneToMany(cascade=CascadeType.ALL,fetch = FetchType.EAGER)
 //	private List<Producto>productos;
-	@ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE }, fetch=FetchType.EAGER)
-	@JoinTable(name = "pedidos_productos",joinColumns = @JoinColumn(name = "productos_id"),inverseJoinColumns = @JoinColumn(name = "pedidos_id"))
+	@ManyToMany( fetch=FetchType.EAGER, cascade = {CascadeType.PERSIST, CascadeType.MERGE },targetEntity=Producto.class)
+	@JoinTable( name = "pedidos_productos",joinColumns = @JoinColumn(name = "productos_id"),inverseJoinColumns = @JoinColumn(name = "pedidos_id"))
 	private Set<Producto> productos = new HashSet<Producto>();
-	
 	
 	
 	public Integer getNumPedido() {

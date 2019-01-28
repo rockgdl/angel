@@ -21,7 +21,7 @@ public class PedidosDaoSql implements PedidosDao {
 
 	@Override
 	public Integer Agrega(Pedidos pedidos) {
-		System.out.println("entre al metodo*************: "+pedidos);
+//		System.out.println("entre al metodo*************: "+pedidos);
 		   Session session= sessionFactory.getCurrentSession();
 //		   Session session=getSession();
 		  //Integer id=(Integer) session.save(user);

@@ -7,6 +7,10 @@ import java.util.List;
 
 
 
+
+
+import org.hibernate.Criteria;
+import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -56,12 +60,18 @@ public class ProductoDaoSql implements ProductoDao {
 	@Override
 	public List<Producto> obtenTodos() {
 //		LOG.debug("REGRESANDO LA LISTA DE COLONIA ");
-		   Session session= sessionFactory.getCurrentSession();
-//		   Transaction trans=session.beginTransaction();
-		Query query=session.createQuery("from Producto");
-		ArrayList<Producto> lista = (ArrayList<Producto>) query.list();
-//		trans.commit();
-		return lista;
+//		   Session session= sessionFactory.getCurrentSession();
+////		   Transaction trans=session.beginTransaction();
+//		Query query=session.createQuery("from Producto");
+//		ArrayList<Producto> lista = (ArrayList<Producto>) query.list();
+////		trans.commit();
+//		return lista;
+		Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Producto.class);
+
+	    criteria.setFetchMode("users", FetchMode.EAGER);
+	    //Other restrictions here as required.
+
+	    return criteria.list();
 	}
 
 	@Override
