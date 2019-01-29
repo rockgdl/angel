@@ -12,12 +12,28 @@ import java.util.Date;
 
 
 
+
+import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.metadata.MethodType;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.support.PagedListHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+
+
+
+
+
+
 
 
 
@@ -43,17 +59,69 @@ public class ProductoController  {
 	@Autowired
 	private Producto producto;
 	 
-	@RequestMapping(value="/principal")
-	public String home(ModelMap model) {
-//		authentication.getPrincipal();
+//	@RequestMapping(value="/principal")
+//	public String home(ModelMap model) {
+////		authentication.getPrincipal();
+//		
+//		model.addAttribute("productos", servicio.getProducts());
+//		model.addAttribute("fecha", new Date());
+//		model.addAttribute("calidades", TipoCalidad.values());
+//		model.addAttribute("medidas", UnidadMedida.values());
+//		model.addAttribute("tipos", TipoProducto.values());
+// 		return "adminProductos";
+// 	}
+	@RequestMapping(value={"/principal","/{page}"} ,method=RequestMethod.GET)
+	public String getProducts(ModelMap model,HttpServletRequest request, @PathVariable(value="page",required = false) String page) {
+
+		System.out.println("entrando al page "+page);
+		Producto producto=new Producto();
 		
-		model.addAttribute("productos", servicio.getProducts());
-		model.addAttribute("fecha", new Date());
+		PagedListHolder <Producto> productos;
+		if(page==null)
+		{
+			page="1";
+			Integer limite=PropiedadesPortal.LIMITE;
+			final int elementoInicial = (Integer.parseInt(page) * limite) - limite;
+
+
+			System.out.println("pagina en null");
+			productos= new PagedListHolder<Producto>();
+			 List<Producto> usersList = servicio.getProductsPaginados(producto,elementoInicial,limite);
+	            // Setting the source for PagedListHolder
+	            productos.setSource(usersList);
+	            productos.setPageSize(PropiedadesPortal.LIMITE);
+	            
+	          
+	    	
+	            // Setting PagedListHolder instance to session
+//	            request.getSession().setAttribute("productos", productos);
+	        	model.addAttribute("productos", productos);
+//	        	model.
+	        }else if(page.equals("prev")) {
+	        	System.out.println("prev");
+	            // get the user list from session
+	            productos = (PagedListHolder<Producto>)request.getSession().getAttribute("productos");
+	            // switch to previous page
+	            productos.previousPage();
+	        }else if(page.equals("next")) {
+	        	System.out.println("next ");
+	            productos = (PagedListHolder<Producto>)request.getSession().getAttribute("productos");
+	            // switch to next page
+	            productos.nextPage();
+	        }else {
+	        	System.out.println("pagina "+page);
+	            int pageNum = Integer.parseInt(page);
+	            productos = (PagedListHolder<Producto>)request.getSession().getAttribute("productos");
+	            // set the current page number
+	            // page number starts from zero in PagedListHolder that's why subtracting 1
+	            productos.setPage(pageNum - 1);
+	        }
+	        
 		model.addAttribute("calidades", TipoCalidad.values());
 		model.addAttribute("medidas", UnidadMedida.values());
 		model.addAttribute("tipos", TipoProducto.values());
- 		return "adminProductos";
- 	}
+		return "adminProductos";
+	}
 	@RequestMapping(value="/deleteProducto")
 	public String eliminarProducto(ModelMap model, @RequestParam("id") Integer id ) {
 		
@@ -84,12 +152,9 @@ public class ProductoController  {
 	}
 	
 	@RequestMapping(value="/addProducto")
-	public String agregaProducto(ModelMap model, @RequestParam(value="nombre",required = true) String nombre,
-			   @RequestParam(value="modificacion",required = false) String modificaion,
-			   @RequestParam(value="observacion",required = false) String observaciones,
-			   @RequestParam(value="precio",required = true) Double precio,
-			   @RequestParam(value="tipoCalidad",required = true) TipoCalidad calidad,
-			   @RequestParam(value="unidad",required = true) UnidadMedida unidad,
+	public String agregaProducto(ModelMap model, @RequestParam(value="nombre",required = true) String nombre, @RequestParam(value="modificacion",required = false) String modificaion,
+			   @RequestParam(value="observacion",required = false) String observaciones,@RequestParam(value="precio",required = true) Double precio,
+			   @RequestParam(value="tipoCalidad",required = true) TipoCalidad calidad, @RequestParam(value="unidad",required = true) UnidadMedida unidad,
 			   @RequestParam(value="tipoProducto",required = true) TipoProducto tipoProducto
 			   
 			) 

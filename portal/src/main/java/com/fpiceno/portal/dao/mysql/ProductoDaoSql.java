@@ -2,20 +2,13 @@ package com.fpiceno.portal.dao.mysql;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
-
-
-
-
-
 import org.hibernate.Criteria;
 import org.hibernate.FetchMode;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
+import org.hibernate.criterion.Projections;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -105,6 +98,40 @@ public class ProductoDaoSql implements ProductoDao {
 		
 			
 			return sesion;
+	}
+
+	@Override
+	public Long countRegistros() {
+		
+		   Session session= sessionFactory.getCurrentSession();
+		   Criteria criteria = session.createCriteria(Producto.class);
+		   criteria.setProjection(Projections.rowCount());
+		   Long count=(Long) criteria.uniqueResult();
+		    // Object result[]= (Object[])l.get(0);
+		    // for(Object i:result){
+		    // System.out.println(result[(int)i]);
+		    // }
+
+	
+		return count;
+	}
+
+	@Override
+	public List<Producto> obtenPaginado( final Producto producto,
+			 final Integer elemntoInicial,final Integer maxXPage) {
+		
+
+		List<Producto > listaProductos =  new ArrayList<Producto>();
+		final Session sesion = sessionFactory.getCurrentSession();
+		
+		final String sql = "FROM Producto AS f ";
+		final Query query = sesion.createQuery(sql);
+		query.setFirstResult(elemntoInicial);
+		query.setMaxResults(maxXPage);
+		
+		listaProductos = query.list();	
+		
+		return listaProductos;
 	}
 
 }

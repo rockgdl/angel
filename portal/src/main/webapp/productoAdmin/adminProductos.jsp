@@ -147,11 +147,12 @@
              </form>
         </div>
 
-	<div align="center">
-			<img src="https://dm2301files.storage.live.com/y4mBeoL_Om45HT9R7LQTQCXYb3dB3EB6MK55OjLU_AZsugCVJa_rIRdbl9CFOJPJv4gDVS9hq4hqUgP8h_4asXEZyOMmWlaOyYr-BWwd5HX5bCOEC-ZhAZgjUlHJTKuhvW83FiHy45Z2SumPoam1BYA3Syh9oGTlceVop9NtEHeG4bFQO0y2w7VVY2JgVG9bAYyscdHDSi7pNax6qjedU7arw/punto%20verde%201%20-%20web-01.jpg?psid=1&width=596&height=564"
-				width="1000" height="300"> 
-	</div>
-	
+<!-- 	<div align="center"> -->
+<!-- 			<img src="https://dm2301files.storage.live.com/y4mBeoL_Om45HT9R7LQTQCXYb3dB3EB6MK55OjLU_AZsugCVJa_rIRdbl9CFOJPJv4gDVS9hq4hqUgP8h_4asXEZyOMmWlaOyYr-BWwd5HX5bCOEC-ZhAZgjUlHJTKuhvW83FiHy45Z2SumPoam1BYA3Syh9oGTlceVop9NtEHeG4bFQO0y2w7VVY2JgVG9bAYyscdHDSi7pNax6qjedU7arw/punto%20verde%201%20-%20web-01.jpg?psid=1&width=596&height=564" -->
+<!-- 				width="1000" height="300">  -->
+<!-- 	</div> -->
+
+
 	<div>
 	
 	  <button class="btn btn-info text-white" type="button" data-toggle="modal" data-target="#addventanaModal" th:id="addProducto" > 
@@ -182,7 +183,7 @@
             <tbody>
                   
             
-		 	<tr th:each="producto: ${productos}">
+		 	<tr th:each="producto: ${productos.pageList}">
 	        <td class="bs-checkbox" ><input th:attr="data-index=${producto.id-1 }" name="btSelectItem" type="checkbox"></td>
 	        <td class="text-center" th:text="${producto.id }"></td>
 	        <td class="text-center" th:text="${producto.nombre}"></td>
@@ -220,6 +221,23 @@
  
             </tbody>
         </table>
+        <div>
+        <span th:if="${productos.firstPage}== true ">Prev</span>
+        <a  th:unless="${productos.firstPage} == false" href="#" th:href="@{/productos/principal}"></a>
+        
+<!--         <span th:text="${productos.page +1 } "></span> -->
+        <span  th:each="producto: ${productos.pageList}">
+        <span th:text="${productoStat.index }"></span>
+        <span th:if="${(productos.page + 1) == productoStat.index}" th:text="${productoStat.index }"></span>
+        <a  th:unless="${(productos.page + 1) ==  productoStat.index} == false" href="#" th:href="@{/productos/principal}" th:text="${ productoStat.index }"></a>
+        </span>
+      
+        </div>
+        
+<!--         <div th:switch="${productos.firstPage}" th:text=${productos.firstPage }> -->
+<!--         <span th:case="true">Prev</span> -->
+<!--   		<p th:case="false"><a href="#" th:href="@{/principal}">Prev</a></p> -->
+<!--         </div> -->
 		
 		
 	</div>

@@ -10,6 +10,7 @@ public interface ProductoService {
 
 	@Secured ({"ROLE_ADMIN"})
 	List<Producto>  getProducts();
+	List<Producto>  getProductsPaginados(Producto producto,Integer elementoInicial,Integer limite);
 
 	Integer  agregarProducto(Producto producto);
 	

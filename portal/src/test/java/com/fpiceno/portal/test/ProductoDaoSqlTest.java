@@ -15,6 +15,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.fpiceno.portal.bl.PropiedadesPortal;
 import com.fpiceno.portal.dao.ProductoDao;
 import com.fpiceno.portal.dao.mysql.ProductoDaoSql;
 import com.fpiceno.portal.entity.Producto;
@@ -38,7 +39,13 @@ public class ProductoDaoSqlTest {
 	@After
 	public void tearDown() throws Exception {
 	}
-
+	
+	@Test
+	public void countRows()
+	{
+		Long rows=dao.countRegistros();
+		System.out.println("numero registro "+ rows);
+	}
 	@Test
 	public void testAgrega() {
 		
@@ -54,7 +61,6 @@ public class ProductoDaoSqlTest {
 		Integer id;
 		assertNotNull( id=dao.Agrega(producto));
 		Producto producto1= new Producto();
-		producto1.setId(1);
 		producto1.setFechaAlta(new Date());
 		producto1.setFechaModificacion(new Date());
 		producto1.setNombre("aguacate1");
@@ -63,7 +69,7 @@ public class ProductoDaoSqlTest {
 		producto1.setUnidad(UnidadMedida.KG);
 		producto1.setPrecio(10.22);
 		producto1.setTipoProducto(TipoProducto.FRUTASVERDURAS);
-//		dao.Agrega(producto1);
+		dao.Agrega(producto1);
 		
 		System.out.println("identificador ********************-----------***********" +id);
 	}
@@ -147,6 +153,24 @@ public class ProductoDaoSqlTest {
 		
 	}
 
+	@Test
+	public void testObtenPaginado()
+	{
+		/*
+		 * todas las paginas empiezan en el 1
+		 */
+		Integer paginaActual=3;
+		Integer limite=PropiedadesPortal.LIMITE;
+		final int elementoInicial = (paginaActual * limite) - limite;
+
+		Producto producto=new Producto();
+		List<Producto> productos=dao.obtenPaginado(producto, elementoInicial, limite);
+		for( Producto p: productos)
+		{
+			System.out.println(p);
+		}
+		
+	}
 
 
 }

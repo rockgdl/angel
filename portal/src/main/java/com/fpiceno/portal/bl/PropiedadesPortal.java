@@ -88,7 +88,7 @@ public class PropiedadesPortal {
     public final static String ESQUEMA_MAQUINARIA = "LIBDTBS01";
     public final static String URL = "http://localhost:8080/rest/";
     
-    public final static int LIMITE = 20;
+    public final static int LIMITE = 5;
     
     public final static int LIMITE_SEGURIDAD = 100000;
     public final static int DECIMALES_DOC = 2;

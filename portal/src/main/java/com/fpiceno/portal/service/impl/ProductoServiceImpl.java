@@ -37,4 +37,11 @@ public class ProductoServiceImpl implements ProductoService {
 		
 	}
 
+
+	@Override
+	public List<Producto> getProductsPaginados(Producto producto,Integer elementoInicial,
+			Integer limite) {
+		return productoDAO.obtenPaginado(producto, elementoInicial, limite);
+	}
+
 }
