@@ -232,5 +232,10 @@ public class ProductoController  {
 //	public String error() {
 // 		return "access-denied";
 // 	}
+	
+	@RequestMapping(value="/tema")
+	public String tema() {
+		return "../PlantillasMenu/Menu";
+	}
 
 }
