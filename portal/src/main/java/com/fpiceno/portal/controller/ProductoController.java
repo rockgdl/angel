@@ -4,43 +4,23 @@ package com.fpiceno.portal.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-
-
-
-
-
-
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.metadata.MethodType;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.support.PagedListHolder;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 import com.fpiceno.portal.bl.PropiedadesPortal;
 import com.fpiceno.portal.entity.Producto;
@@ -70,28 +50,54 @@ public class ProductoController  {
 //		model.addAttribute("tipos", TipoProducto.values());
 // 		return "adminProductos";
 // 	}
-	@RequestMapping(value={"/principal","/{page}"} ,method=RequestMethod.GET)
-	public String getProducts(ModelMap model,HttpServletRequest request, @PathVariable(value="page",required = false) String page) {
+	
+//	@RequestMapping(value = "/pages/{pageNumber}", method = RequestMethod.GET)
+//	public String getRunbookPage(@PathVariable Integer pageNumber, Model model) {
+//	    Page<Producto> page = servicioJpa.getDeploymentLog(pageNumber);
+//
+//	    int current = page.getNumber() + 1;
+//	    int begin = Math.max(1, current - 5);
+//	    int end = Math.min(begin + 10, page.getTotalPages());
+//
+//	    model.addAttribute("deploymentLog", page);
+//	    model.addAttribute("beginIndex", begin);
+//	    model.addAttribute("endIndex", end);
+//	    model.addAttribute("currentIndex", current);
+//
+//	    return "productos";
+//	}
+	
+	
+	@RequestMapping(value="/principal/{page}" ,method=RequestMethod.GET)
+	public String getProducts(ModelMap model,HttpServletRequest request, @PathVariable(name="page",required = false) String page) {
 
 		System.out.println("entrando al page "+page);
 		Producto producto=new Producto();
+		Long records ;
+		records=servicio.getCountProductos();
 		
-		PagedListHolder <Producto> productos;
+		PagedListHolder <Producto> productos =  new PagedListHolder<Producto>();
 		if(page==null)
 		{
-			page="1";
 			Integer limite=PropiedadesPortal.LIMITE;
+			
+			int total = (int) (records / limite);
+			if (records > (total * limite)) {
+				total = total + 1;
+			}
+			
+		
+			page="1";
 			final int elementoInicial = (Integer.parseInt(page) * limite) - limite;
 
+			System.out.println("numero de paginas que debe haber "+total+" numero de registros en la base de datos "+records);
 
 			System.out.println("pagina en null");
-			productos= new PagedListHolder<Producto>();
+		
 			 List<Producto> usersList = servicio.getProductsPaginados(producto,elementoInicial,limite);
 	            // Setting the source for PagedListHolder
 	            productos.setSource(usersList);
 	            productos.setPageSize(PropiedadesPortal.LIMITE);
-	            
-	          
 	    	
 	            // Setting PagedListHolder instance to session
 //	            request.getSession().setAttribute("productos", productos);
@@ -111,7 +117,13 @@ public class ProductoController  {
 	        }else {
 	        	System.out.println("pagina "+page);
 	            int pageNum = Integer.parseInt(page);
-	            productos = (PagedListHolder<Producto>)request.getSession().getAttribute("productos");
+	        	final int elementoInicial = (Integer.parseInt(page) * PropiedadesPortal.LIMITE) - PropiedadesPortal.LIMITE;
+	        	System.out.println("elemento inicial de la consulta");
+	       	 	List<Producto> usersList = servicio.getProductsPaginados(producto,elementoInicial,PropiedadesPortal.LIMITE);
+	       	 	productos.setSource(usersList);
+	            productos.setPageSize(PropiedadesPortal.LIMITE);
+
+//	        	productos = (PagedListHolder<Producto>)request.getSession().getAttribute("productos");
 	            // set the current page number
 	            // page number starts from zero in PagedListHolder that's why subtracting 1
 	            productos.setPage(pageNum - 1);

@@ -225,12 +225,14 @@
         <span th:if="${productos.firstPage}== true ">Prev</span>
         <a  th:unless="${productos.firstPage} == false" href="#" th:href="@{/productos/principal}"></a>
         
+        
+        
 <!--         <span th:text="${productos.page +1 } "></span> -->
-        <span  th:each="producto: ${productos.pageList}">
-        <span th:text="${productoStat.index }"></span>
-        <span th:if="${(productos.page + 1) == productoStat.index}" th:text="${productoStat.index }"></span>
-        <a  th:unless="${(productos.page + 1) ==  productoStat.index} == false" href="#" th:href="@{/productos/principal}" th:text="${ productoStat.index }"></a>
-        </span>
+<!--         <span  th:each="producto: ${productos.pageList}"> -->
+<!--         <span th:text="${productoStat.index }"></span> -->
+<!--         <span th:if="${(productos.page + 1) == productoStat.index}" th:text="${productoStat.index }"></span> -->
+<!--         <a  th:unless="${(productos.page + 1) ==  productoStat.index} == false" href="#" th:href="@{/productos/principal/productoStat.index}" th:text="${ productoStat.index }"></a> -->
+<!--         </span> -->
       
         </div>
         

@@ -22,6 +22,7 @@
 		<security:intercept-url pattern="/userCRUD/createUser" access="permitAll" />
 		<security:intercept-url pattern="/portal/userCRUD/createUser" access="permitAll" />
 		<security:intercept-url pattern="/userCRUD/**" access="permitAll" />
+		<security:intercept-url pattern="/services/**" access="permitAll" />
 
 		
 		
@@ -39,6 +40,7 @@
 <!-- 	</http> -->
 	<beans:bean name="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>	
 	<beans:bean name="myAppUserDetailsService" class="com.fpiceno.portal.service.MyAppUserDetailsService"/>
+<!-- 	<beans:bean name="serviceJpa" class="com.fpiceno.portal.service.ProductoServiceImpl"/> -->
 
 	<beans:bean name="userService"    class="com.fpiceno.portal.service.UserService"/>	
 	<beans:bean name="productService"    class="com.fpiceno.portal.service.impl.ProductoServiceImpl"/>

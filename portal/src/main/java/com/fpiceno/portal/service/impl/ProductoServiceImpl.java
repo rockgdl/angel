@@ -44,4 +44,10 @@ public class ProductoServiceImpl implements ProductoService {
 		return productoDAO.obtenPaginado(producto, elementoInicial, limite);
 	}
 
+
+	@Override
+	public Long getCountProductos() {
+		return productoDAO.countRegistros();
+	}
+
 }

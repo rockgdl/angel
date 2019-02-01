@@ -1,0 +1,28 @@
+<!-- Use this file to deploy some handlers/chains and services      -->
+<!-- Two ways to do this:                                           -->
+<!--   java org.apache.axis.client.AdminClient deploy.wsdd          -->
+<!--      after the axis server is running                          -->
+<!-- or                                                             -->
+<!--   java org.apache.axis.utils.Admin client|server deploy.wsdd   -->
+<!--      from the same directory that the Axis engine runs         -->
+
+<deployment
+    xmlns="http://xml.apache.org/axis/wsdd/"
+    xmlns:java="http://xml.apache.org/axis/wsdd/providers/java">
+
+  <!-- Services from ProductoDaoWsImplService WSDL service -->
+
+  <service name="ProductoDaoWsImpl" provider="java:RPC" style="wrapped" use="literal">
+      <parameter name="wsdlTargetNamespace" value="http://impl.webservices.portal.fpiceno.com"/>
+      <parameter name="wsdlServiceElement" value="ProductoDaoWsImplService"/>
+      <parameter name="schemaQualified" value="http://impl.webservices.portal.fpiceno.com"/>
+      <parameter name="wsdlServicePort" value="ProductoDaoWsImpl"/>
+      <parameter name="className" value="com.fpiceno.portal.webservices.impl.ProductoDaoWsImplSoapBindingImpl"/>
+      <parameter name="wsdlPortType" value="ProductoDaoWsImpl"/>
+      <parameter name="typeMappingVersion" value="1.2"/>
+      <operation name="getProductos" qname="operNS:getProductos" xmlns:operNS="http://impl.webservices.portal.fpiceno.com" returnQName="retNS:getProductosReturn" xmlns:retNS="http://impl.webservices.portal.fpiceno.com" returnType="rtns:string" xmlns:rtns="http://www.w3.org/2001/XMLSchema" soapAction="" >
+      </operation>
+      <parameter name="allowedMethods" value="getProductos"/>
+
+  </service>
+</deployment>

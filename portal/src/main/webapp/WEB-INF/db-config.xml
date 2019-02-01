@@ -2,21 +2,28 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+    
     xmlns:context="http://www.springframework.org/schema/context"
     xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx 
         http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/data/jpa 
+        http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
         http://www.springframework.org/schema/context 
         http://www.springframework.org/schema/context/spring-context.xsd">
+        
+          <!-- Create default configuration for Hibernate -->
+  <bean id="hibernateJpaVendorAdapter" class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+        
 
-<!-- 	<context:property-placeholder location="classpath:database.properties"/>  -->
 	<context:property-placeholder location="classpath*:database.properties"/> 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/concretepage?serverTimezone=UTC" />
+		<property name="url" value="jdbc:mysql://localhost:3306/concretepage" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="fa7730pr" />
 	</bean>
 <!-- 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> -->
 <!-- 		<property name="driverClassName" value="${database.driverClassName}" /> -->
@@ -42,6 +49,7 @@
 		<constructor-arg name="sessionFactory" ref="sessionFactory"/>  
 	</bean>	
 	<bean class="com.fpiceno.portal.dao.UserDao" />
+	 <jpa:repositories  base-package="om.fpiceno.portal.dao" />
 	<bean name="productDao" class="com.fpiceno.portal.dao.mysql.ProductoDaoSql"/>
 	<bean name="producto" class="com.fpiceno.portal.entity.Producto"/>
 	<bean name="correo" class="com.fpiceno.portal.entity.Correo"/>
@@ -50,5 +58,6 @@
 	<bean name="userDaoCRUD" class="com.fpiceno.portal.dao.mysql.userDaoSqlCRUD"/>
 <!-- 	<bean name="clienteDao" class="com.fpiceno.portal.dao.mysql.ClienteDaoSql"/> -->
 <!-- 	<bean name="productoDao" class="com.fpiceno.portal.dao.mysql.PedidosDaoSql"/> -->
+
 	<tx:annotation-driven transaction-manager="transactionManager" /> 		
 </beans> 

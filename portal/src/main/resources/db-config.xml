@@ -14,9 +14,9 @@
 	<context:property-placeholder location="classpath*:database.properties"/> 
 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/concretepage?serverTimezone=UTC" />
+		<property name="url" value="jdbc:mysql://localhost:3306/concretepage" />
 		<property name="username" value="root" />
-		<property name="password" value="" />
+		<property name="password" value="fa7730pr" />
 	</bean>
 <!-- 	<bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close"> -->
 <!-- 		<property name="driverClassName" value="${database.driverClassName}" /> -->
@@ -51,6 +51,8 @@
 	<bean name="UserDaoCRUD" class="com.fpiceno.portal.dao.mysql.userDaoSqlCRUD"/>
 	<bean name="clienteDao" class="com.fpiceno.portal.dao.mysql.ClienteDaoSql"/>
 	<bean name="productoDao" class="com.fpiceno.portal.dao.mysql.PedidosDaoSql"/>
+<!-- 	<bean name="ProductosDaoDataJpa" class="com.fpiceno.portal.dao.ProductosDaoDataJpa"/> -->
+	
 
 	<tx:annotation-driven transaction-manager="transactionManager" /> 		
 </beans> 

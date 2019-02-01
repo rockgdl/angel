@@ -13,6 +13,7 @@ public interface ProductoService {
 	List<Producto>  getProductsPaginados(Producto producto,Integer elementoInicial,Integer limite);
 
 	Integer  agregarProducto(Producto producto);
+	Long getCountProductos();
 	
 	void EliminarProducto(Producto producto);
 	void ActualizaProducto(Producto producto);
