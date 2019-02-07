@@ -25,15 +25,11 @@
 		<security:intercept-url pattern="/services/**" access="permitAll" />
 
 		
-		
-		
-		
-		
 		<security:intercept-url pattern="/**" access="permitAll" />
 <!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
-		
+		<security:csrf disabled="true"/>
 <!-- 		<intercept-url pattern="/productos/**" access="isAuthenticated()" /> -->
-		<security:form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/test/principal" />
+		<security:form-login  login-page="/customLogin.jsp" login-processing-url="/j_spring_security_check" username-parameter="app_username"  password-parameter="app_password" default-target-url="/test/principal" />
 		<security:logout delete-cookies="JSESSIONID" invalidate-session="true" logout-url="/logout" logout-success-url="/customLogin.jsp" />  
 		<access-denied-handler error-page="/user/error"/>
 		</security:http>

@@ -1,3 +1,4 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
     <head>
         <title>Spring 4 Security Example</title>
@@ -22,7 +23,8 @@
 		     <font color="red">
  		   ${SPRING_SECURITY_LAST_EXCEPTION.message} 
          </font> 
-  <form class="login-form" action="<%=request.getContextPath()%>/appLogin" method="POST">
+         <form   class="login-form" name='f' action='<c:url value="/j_spring_security_check" />' method='POST'>
+<%--   <form class="login-form" action="<%=request.getContextPath()%>/login" method="POST"> --%>
 	  <div class="form-group">
 	    <label for="exampleInputEmail1" class="text-uppercase">Usuario</label>
 	    <input type="text" class="form-control" placeholder="" name="app_username" >

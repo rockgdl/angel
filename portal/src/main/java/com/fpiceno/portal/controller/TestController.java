@@ -22,6 +22,10 @@ public class TestController {
 	@RequestMapping(value="/principal")
 	public String home(ModelMap model,Authentication authentication,HttpServletRequest request) {
 		System.err.println("error intentando mapear al usuario ");
+		if(authentication==null)
+		{
+			return "redirect:/logout";
+		}
 		authentication.getPrincipal();
 		request.getSession().setAttribute("user",service.getDataByUserName(authentication.getName()));
 //		authentication.getPrincipal();

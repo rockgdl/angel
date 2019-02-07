@@ -22,15 +22,18 @@
                 <li th:classappend="${module == 'tasks' ? 'active' : ''}">
                     <a href="#" th:href="@{/productos/principal/1}">Pedidos</a>
                 </li>
-                <li th:classappend="${module == 'tasks-ld' ? 'active' : ''}">
-                    <a href="#" th:href="@{/task-ld}">Tasks (Layout Dialect)</a>
+                <li th:classappend="${module == 'contacto' ? 'active' : ''}">
+                    <a href="#" th:href="@{/Correo/Contacto}">Contacto</a>
+                </li>
+                <li sec:authorize="hasRole('ROLE_ADMIN')" th:classappend="${module == 'usuarios' ? 'active' : ''}">
+                    <a href="#" th:href="@{/userCRUD/usuario}">Agregar Usuarios</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
 <!--                 <li th:if="${#authorization.expression('!isAuthenticated()')}"> -->
                 <li sec:authorize="isAuthenticated()==false">
 
-                    <a href="/signin" th:href="@{/customLogin.jsp}">
+                    <a href="/signin" th:href="@{/logout}">
                         <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span>&nbsp;Sign in
                     </a>
                 </li>
@@ -44,6 +47,7 @@
                     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>		
                     </form>
                 </li>
+         
             </ul>
         </div>
         <!--/.nav-collapse -->
