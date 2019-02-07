@@ -223,9 +223,8 @@
         </table>
         <div>
         <span th:if="${productos.firstPage}== true ">Prev</span>
-        <a  th:unless="${productos.firstPage} == false" href="#" th:href="@{/productos/principal}"></a>
-        
-        
+        <a  th:unless="${productos.firstPage} == false" href="#" th:href="@{/productos/principal/1}"></a>
+       
         
 <!--         <span th:text="${productos.page +1 } "></span> -->
 <!--         <span  th:each="producto: ${productos.pageList}"> -->

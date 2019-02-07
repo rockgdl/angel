@@ -7,9 +7,9 @@
     <body>
       <h3>detalles del usuario</h3>
       <table>
-        <tr><td >Name</td><td th:text="${user.fullName }"></td></tr>
-        <tr><td>Role</td><td th:text="${user.role }"></td></tr>
-        <tr><td>Country</td><td th:text="${user.country }"></td></tr>
+        <tr><td >Name</td><td th:text="${session.user.fullName }"></td></tr>
+        <tr><td>Role</td><td th:text="${session.user.role }"></td></tr>
+        <tr><td>Country</td><td th:text="${session.user.country }"></td></tr>
       </table>      
       <form action="@{appLogout}" method="POST">
         <input type="submit" value="Logout"/>

@@ -33,8 +33,8 @@
 <!-- 		<security:intercept-url pattern="/**" access="denyAll" /> -->
 		
 <!-- 		<intercept-url pattern="/productos/**" access="isAuthenticated()" /> -->
-		<security:form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/user/home" />
-		<security:logout invalidate-session="true" logout-url="/appLogout" logout-success-url="/customLogin.jsp" />  
+		<security:form-login  login-page="/customLogin.jsp" login-processing-url="/appLogin" username-parameter="app_username"  password-parameter="app_password" default-target-url="/test/principal" />
+		<security:logout delete-cookies="JSESSIONID" invalidate-session="true" logout-url="/logout" logout-success-url="/customLogin.jsp" />  
 		<access-denied-handler error-page="/user/error"/>
 		</security:http>
 <!-- 	</http> -->

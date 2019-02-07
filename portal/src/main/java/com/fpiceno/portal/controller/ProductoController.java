@@ -127,6 +127,7 @@ public class ProductoController  {
 	            // set the current page number
 	            // page number starts from zero in PagedListHolder that's why subtracting 1
 	            productos.setPage(pageNum - 1);
+	            model.addAttribute("productos", productos);
 	        }
 	        
 		model.addAttribute("calidades", TipoCalidad.values());
